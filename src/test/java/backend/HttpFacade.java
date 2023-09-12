@@ -1,5 +1,7 @@
 package backend;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -14,7 +16,7 @@ public class HttpFacade {
     private static String BASE_URL = "https://api-prod.rami-levy.co.il/api/v2/site/auth/login";
 
 
-    public static T Class<T> post (String url) throws URISyntaxException, IOException, InterruptedException {
+    public static  <T> T  post (String url) throws URISyntaxException, IOException, InterruptedException {
         Gson gson = new Gson();
         String params = gson.toJson(r);
         HttpRequest httpRequest = HttpRequest.newBuilder()
