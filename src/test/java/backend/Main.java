@@ -26,34 +26,3 @@ public class Main {
 //        driver.navigate().refresh();
     }
 }
-//localStorage.setItem("ramilevy", `
-//        {"authuser":{
-//        "user": {
-//        "id": 889341,
-//        "first_name": "חמוד",
-//        "last_name": "קטיש",
-//        "email": "hamoodka8416@gmail.com",
-//        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLXByb2QucmFtaS1sZXZ5.lots-of-characters-here",
-//        "user_id": "99001547565",
-//        "identity_card": "315840314",
-//        "business": 0,
-//        "send_email": 1,
-//        "send_sms": 1,
-//        "subscribe_at": "2023-09-12 16:19:09",
-//        "subscribe_ip": "172.69.128.138",
-//        "club_accept_at": "2023-09-12 16:19:09",
-//        "club_accept_ip": "172.69.128.138",
-//        "club_accept": 1,
-//        "send_club_database": 0,
-//        "name": "חמוד קטיש",
-//        "orders": [],
-//        "cards": [],
-//        "addresses": [],
-//        "popularProducts": "",
-//        "features": [],
-//        "coupons": []
-//        },
-//        "orderTokens": [],
-//        "shopLists": []
-//        }}
-//        `);
