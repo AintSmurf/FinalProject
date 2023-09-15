@@ -6,7 +6,7 @@ public class MainPageLocators {
     public static By search = By.id("destination");
     public static By cart = By.xpath("//*[@id=\"onlineCartHeader\"]/div[1]/div[1]/span/svg");
     public static By filter= By.xpath("//*[@id=\"search\"]/div/div/div[1]/div/div[1]/div/div[1]/div[3]");
-    public static By mainPage = By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[1]/div[3]/div[2]/div/div[1]/a/svg");
+    public static By mainPage = By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[1]/div[3]/div[2]/div/div[1]");
     public static By sales = By.id("sale");
     public static By history = By.id("history");
     public static By fruits = By.xpath("//*[@id=\"main-menu-0\"]");
@@ -22,6 +22,8 @@ public class MainPageLocators {
     public static By houseKeeping = By.xpath("//*[@id=\"main-menu-10\"]");
     public static By babies = By.xpath("//*[@id=\"main-menu-11\"]");
     public static By pastries = By.xpath("//*[@id=\"main-menu-12\"]");
+
+    public static By sorting = By.xpath("//div[@aria-label='סינון']");
 
 
 

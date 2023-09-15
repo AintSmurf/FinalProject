@@ -1,22 +1,29 @@
 package frontend.pages;
 
+import frontend.locators.MainPageLocators;
 import frontend.locators.MyListLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.swing.*;
+import java.time.Duration;
 import java.util.List;
 
 public class HomePage extends basePage {
     private final String Url = "https://www.rami-levy.co.il/he";
-    private WebElement creatList;
-    private WebElement writingArea;
+
     private Actions actions;
-    private WebElement contunie;
-    private WebElement delete;
+
+    private  WebElement searchElemt;
+
+    private WebElement gotoMain;
+    private WebElement frozenss;
+    private WebElement sort;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -29,57 +36,28 @@ public class HomePage extends basePage {
     }
 
     public void initPage() {
-        creatList = driver.findElement(MyListLocators.createList);
         actions = new Actions(driver);
 
     }
 
-    public void openList() {
-        waitTillClickable(driver, 10, MyListLocators.createList);
-    }
 
-    public void writeList(String[] list) {
-        writingArea = driver.findElement(MyListLocators.productsList);
-        waitTillVisible(driver, 10, MyListLocators.productsList);
-        for (int i = 0; i < list.length; i++) {
-            actions.sendKeys(writingArea, list[i]).build().perform();
-            this.newline();
-        }
-    }
-
-    public void newline() {
-        actions.keyDown(Keys.SHIFT).sendKeys(writingArea, Keys.ENTER).keyUp(Keys.SHIFT).build().perform();
-    }
-
-    public void Contunie(int ret) throws InterruptedException {
-        int maxret = 0;
-        while (maxret < ret) {
-            WebElement temp = writingArea.findElement(MyListLocators.contunie);
-            temp.click();
-            ret++;
-        }
+    public void searchstuff(String item){
+        searchElemt= driver.findElement(MainPageLocators.search);
+        searchElemt.sendKeys(item);
+        searchElemt.sendKeys(Keys.RETURN);
 
     }
-    public void add(){
-          WebElement web = driver.findElement(MyListLocators.listItems);
-          List<WebElement>elements = web.findElements(By.tagName("div"));
-        for (WebElement w: elements
-             ) {
-            System.out.println(w.getText());
-
-        }
-
-
+    public void returnToMain(){
+        gotoMain = driver.findElement(MainPageLocators.mainPage);
+        gotoMain.click();
     }
 
-    public void cancle1(int ret) {
-        int maxret = 0;
-        while (maxret < ret) {
-            WebElement cancle = writingArea.findElement(MyListLocators.deleteList);
-            cancle.click();
-            ret++;
-
-        }
-
+    public void goToFrozen(){
+        frozenss = driver.findElement(MainPageLocators.frozens);
+        frozenss.click();
+    }
+    public void sortFromCheapTo(){
+        sort = driver.findElement(MainPageLocators.sorting);
+        sort.click();
     }
 }

@@ -7,11 +7,14 @@ public class MyListLocators {
     public static By productsList= By.id("list-product");
     public static By contunie = By.xpath("//div[@aria-label='המשך']");
 
+    public static By addItemAterSearch =By.id("Capa_1");
     public static By cancle = By.xpath("//div[@aria-label='ביטול']");
     public static By deleteList = By.xpath("//button[@aria-label='מחק רשימה']");
-    public static  By listItems = By.xpath("//div[@class='d-flex flex-wrap justify-content-between p-1']");
-    public static By addItemAterSearch = By.xpath("//div[@aria-label='הוסף 1 יחידות לחלב תנובה טרי1ל קרטון 3% מהדרין לסל הקניות']");
-    public static By deleteCart = By.xpath("//*[@id=\"remove-cart\"]/svg");
-    public static By confirmation = By.xpath("//*[@id=\"delete-cart-btn\"]");
-    public static By cancleDelete = By.id("noEmptyCart");
+
+    public static By confirmationdelete = By.xpath("//*[@id=\"rating___BV_modal_body_\"]/div/div/div[2]/div[2]");
+    public static By cancleDelete = By.xpath("//div[@aria-label='לא']");
+    public static By popupDelet= By.xpath("//*[@id=\"rating___BV_modal_body_\"]/div/div");
+    public static By results =By.xpath("//*[@id=\"result-wrap\"]");
+    public static By first = By.xpath("//button[@aria-label id='product-7290004131074']");
+    public static By next = By.xpath("//*[@id=\"__BVID__414___BV_modal_body_\"]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div[1]");
 }
