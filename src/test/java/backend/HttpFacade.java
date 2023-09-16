@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package backend;
 
 import backend.pages.User;
@@ -15,18 +16,16 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 
 public class HttpFacade {
-    public HttpFacade() {
-    }
 
     private static String BASE_URL = "https://api-prod.rami-levy.co.il/api/v2";
 
 
-    public static <T> String post (String url, HashMap<String, String> userDet, Class<T> clz) throws URISyntaxException, IOException, InterruptedException {
+    public static <T> String post(String url, HashMap<String, String> userDet, Class<T> clz) throws URISyntaxException, IOException, InterruptedException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Create Gson instance with pretty printing
         String params = new Gson().toJson(userDet);
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .header("Content-Type", "application/json")
-                .uri(new URI(BASE_URL+url))
+                .uri(new URI(BASE_URL + url))
                 .POST(HttpRequest.BodyPublishers.ofString(params))
                 .build();
         HttpClient httpClient = HttpClient.newHttpClient();
@@ -41,8 +40,6 @@ public class HttpFacade {
 //        catch (Exception e){
 //            System.out.println("Failed to convert.");
 //        }
-        return  formattedJsonResponse;
+        return formattedJsonResponse;
     }
-
-
 }
