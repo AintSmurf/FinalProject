@@ -14,7 +14,7 @@ public class MyListLocators {
     public static By confirmationdelete = By.xpath("//*[@id=\"rating___BV_modal_body_\"]/div/div/div[2]/div[2]");
     public static By cancleDelete = By.xpath("//div[@aria-label='לא']");
     public static By popupDelet= By.xpath("//*[@id=\"rating___BV_modal_body_\"]/div/div");
-    public static By results =By.xpath("//*[@id=\"result-wrap\"]");
+    public static By results =By.xpath("//div[@class='d-flex flex-wrap justify-content-between p-1']");
     public static By first = By.xpath("//button[@aria-label id='product-7290004131074']");
     public static By next = By.xpath("//*[@id=\"__BVID__414___BV_modal_body_\"]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div[1]");
 }

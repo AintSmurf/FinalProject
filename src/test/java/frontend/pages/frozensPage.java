@@ -51,7 +51,7 @@ public class frozensPage extends basePage {
         clicktopay.click();
     }
     public void verfyCart(){
-        WebElement cartItems = driver.findElement(By.xpath("//div[@aria-label='2 פריטים בסל. לחץ לפירוט']"));
+        WebElement cartItems = driver.findElement(By.xpath("//div[@aria-label='1 פריטים בסל. לחץ לפירוט']"));
         if(cartItems.isDisplayed()){
             WebElement payment = driver.findElement(By.id("paymentBtn"));
 
