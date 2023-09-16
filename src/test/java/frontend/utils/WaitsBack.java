@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class WaitsHelpers {
+public class WaitsBack {
 
 
     public static void waitTillScriptExecuted(WebDriver driver, int timeout, String script) {

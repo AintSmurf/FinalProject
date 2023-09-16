@@ -2,7 +2,6 @@ package backend;
 
 import backend.pom.User;
 import backend.utils.Utils;
-import frontend.utils.WaitsHelpers;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

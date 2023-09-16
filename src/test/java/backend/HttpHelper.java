@@ -3,13 +3,11 @@ package backend;
 import backend.pom.HttpResponseAndFormattedJson;
 import backend.pom.User;
 import backend.utils.Utils;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
-import java.util.Objects;
 
 public class HttpHelper {
     private static HttpResponseAndFormattedJson httpResponseAndFormattedJson;
