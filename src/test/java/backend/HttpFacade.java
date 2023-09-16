@@ -1,7 +1,6 @@
 package backend;
 
-import backend.pages.User;
-import backend.pages.Userdetails;
+import backend.pom.HttpResponseAndFormattedJson;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
@@ -15,33 +14,40 @@ import java.net.http.HttpResponse;
 import java.util.HashMap;
 
 public class HttpFacade {
+
     public HttpFacade() {
     }
 
     private static String BASE_URL = "https://api-prod.rami-levy.co.il/api/v2";
 
 
-    public static <T> String post (String url, HashMap<String, String> userDet, Class<T> clz) throws URISyntaxException, IOException, InterruptedException {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create(); // Create Gson instance with pretty printing
+    public static  <T> HttpResponseAndFormattedJson<T> post (String url, HashMap<String, String> userDet, Class<T> clz) throws URISyntaxException, IOException, InterruptedException {
+        //objects
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+
+        //convert the user details map to json
         String params = new Gson().toJson(userDet);
+
+        //make the request
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .header("Content-Type", "application/json")
                 .uri(new URI(BASE_URL+url))
                 .POST(HttpRequest.BodyPublishers.ofString(params))
                 .build();
+        //create httpclient to handle the response
         HttpClient httpClient = HttpClient.newHttpClient();
+
+        //capture the response
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+        //convert the response to String to set the localStorage
         String formattedJsonResponse = gson.toJson(JsonParser.parseString(httpResponse.body()));
-//        System.out.println(formattedJsonResponse);
-//        T result=  gson.fromJson(httpResponse.body(), clz);
-//        try {
-//            Userdetails userdetails = ((User) result).getUser();
-////            System.out.println(userdetails);
-//        }
-//        catch (Exception e){
-//            System.out.println("Failed to convert.");
-//        }
-        return  formattedJsonResponse;
+
+        //convert response to pom through SerializedName
+        T result=  gson.fromJson(httpResponse.body(), clz);
+
+        return new HttpResponseAndFormattedJson<>(httpResponse, formattedJsonResponse,result);
     }
 
 

@@ -1,4 +1,4 @@
-package backend.pages;
+package backend.pom;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -14,4 +14,10 @@ public class User {
         this.user = user;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "user=" + user +
+                '}';
+    }
 }

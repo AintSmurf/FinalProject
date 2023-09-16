@@ -1,13 +1,17 @@
 package backend;
 
-import backend.pages.User;
+import backend.pom.User;
+import backend.utils.Utils;
+import frontend.utils.WaitsHelpers;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+
 import java.io.IOException;
 import java.net.URISyntaxException;
+
 
 public class Main {
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
@@ -18,11 +22,15 @@ public class Main {
         WebDriver driver = new ChromeDriver(chromeOptions);
 
         driver.get("https://www.rami-levy.co.il/he");
-        String u  = HttpHelper.getUser("hamoodka8416@gmail.com","123456Hamod");
+        String token  = HttpHelper.getToken("hamoodka8416@gmail.com","123456Hamod");
+        User userDet = HttpHelper.getUserDetails("hamoodka8416@gmail.com","123456Hamod");
+        System.out.println(userDet);
+
         JavascriptExecutor js = (JavascriptExecutor)driver;
-        String jsonData = "{\"authuser\":" + u + "}";
-        System.out.println(jsonData);
-        js.executeScript(String.format("window.localStorage.setItem('ramilevy',JSON.stringify(%s))",jsonData));
-//        driver.navigate().refresh();
+
+        js.executeScript(String.format("window.localStorage.setItem('ramilevy',JSON.stringify(%s));",token));
+        Utils.waitTillScriptExecuted(driver, 20, "return localStorage.getItem('ramilevy') !== null;");
+
+        driver.navigate().refresh();
     }
 }
