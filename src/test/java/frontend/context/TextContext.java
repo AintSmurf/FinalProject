@@ -27,6 +27,12 @@ public class TextContext {
         return new HomePage(getDriver());
     }
 
+    public String getEmail() {
+        return System.getenv("EMAIL");
+    }
 
+    public String getPassword() {
+        return System.getenv("PASSWORD");
+    }
 }
 

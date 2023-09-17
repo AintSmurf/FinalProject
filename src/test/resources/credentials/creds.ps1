@@ -1,0 +1,2 @@
+$env:EMAIL=''
+$env:PASSWORD=''

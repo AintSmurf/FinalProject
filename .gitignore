@@ -1,2 +1,5 @@
 target/
 .idea/
+src/test/java/backend/main.java
+src/test/resources/credentials/credsLocal.ps1
+src/test/java/frontend/main.java

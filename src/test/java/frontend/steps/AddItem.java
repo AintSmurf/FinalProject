@@ -15,7 +15,7 @@ public class AddItem {
     @Given("I am logged in")
     public void i_am_logged_in()  throws URISyntaxException, IOException, InterruptedException {
         textContext.getHomePage();
-        textContext.login("knawras17@gmail.com","123nawras");
+        textContext.login(textContext.getEmail(), textContext.getPassword());
         textContext.getHomePage().refresh();
     }
     @When("I add an item")
