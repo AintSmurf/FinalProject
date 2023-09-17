@@ -1,5 +1,6 @@
 package frontend.steps;
 
+import frontend.utils.WebDriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.BeforeAll;
@@ -17,49 +18,38 @@ import java.io.IOException;
 
 @Slf4j
 public class Hooks {
-    public WebDriver driver;
+
+
     @BeforeAll
-    public static void cleanFramework(){
+    public static void cleanFramework() {
         log.info("Cleaning the screenshot Directory");
         try {
             FileUtils.cleanDirectory(new File("src/test/screenshots/"));
-        }
-        catch (IOException  | IllegalArgumentException e){
+        } catch (IOException | IllegalArgumentException e) {
             log.error("Failed to clean the screenshot Directory.");
         }
     }
 
     @Before
-    public void setUp(){
-        setDriver();
+    public void setUp() {
         log.info("driver is initialized.");
-    }
-
-    private void setDriver() {
-        System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
-    }
-
-    public WebDriver getDriver() {
-
-        return driver;
     }
 
     @After
     public void tearDown(Scenario s) {
-        if(s.isFailed()){
+        WebDriver driver = WebDriverManager.initlaizeDriver();
+        if (s.isFailed()) {
             try {
                 File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(screenshot,new File("src/test/screenshots/" + s.getName() + ".png"));
-                log.error("Screenshot saved to: "+ "screenshots/"+ s.getName() + ".png");
+                FileUtils.copyFile(screenshot, new File("src/test/screenshots/" + s.getName() + ".png"));
+                log.error("Screenshot saved to: " + "screenshots/" + s.getName() + ".png");
             } catch (IOException e) {
                 log.error("Failed to take screenshot.");
             }
         }
-        if(driver != null)
-            getDriver().quit();
-        log.info("driver is closed.");
+        if (driver != null) {
+            driver.close();
+            log.info("driver is closed.");
+        }
     }
-
-
 }

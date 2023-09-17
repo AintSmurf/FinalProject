@@ -60,4 +60,11 @@ public class HomePage extends basePage {
         sort = driver.findElement(MainPageLocators.sorting);
         sort.click();
     }
+
+    public void refresh(){
+        this.refreshBrowser();
+    }
+    public void close(){
+        this.closeBrowser();
+    }
 }

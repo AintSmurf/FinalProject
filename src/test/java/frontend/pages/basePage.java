@@ -17,7 +17,12 @@ public class basePage {
         this.driver = driver;
 
     }
-
+    protected void refreshBrowser(){
+        driver.navigate().refresh();
+    }
+    protected void closeBrowser(){
+        driver.close();
+    }
         public static void waitTillClickable(WebDriver driver, int timeout, By value) {
             try {
                 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
