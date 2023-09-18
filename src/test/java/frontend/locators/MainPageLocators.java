@@ -25,6 +25,8 @@ public class MainPageLocators {
 
     public static By sorting = By.xpath("//div[@aria-label='סינון']");
 
+    public static By toPay = By.xpath("//div[contains(@class, 'focus-item') and contains(@class, 'd-flex-') and contains(@class, 'white-text') and contains(@class, 'w-100') and contains(@class, 'px-3-') and contains(@class, 'pl-md-5')]");
+
 
 
 

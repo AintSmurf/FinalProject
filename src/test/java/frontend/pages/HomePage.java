@@ -24,6 +24,7 @@ public class HomePage extends basePage {
     private WebElement gotoMain;
     private WebElement frozenss;
     private WebElement sort;
+    private WebElement paying;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -60,4 +61,10 @@ public class HomePage extends basePage {
         sort = driver.findElement(MainPageLocators.sorting);
         sort.click();
     }
+    public void goToPay() {
+        paying = driver.findElement(MainPageLocators.toPay);
+        waitTillVisible(driver,10,MainPageLocators.toPay);
+        paying.click();
+    }
+
 }

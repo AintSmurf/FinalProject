@@ -9,6 +9,11 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 public class frozensPage extends basePage {
+    private  WebElement cartItems;
+    private  WebElement close;
+    private WebElement add;
+    private  WebElement list;
+
     private WebElement clicktopay;
     private final String Url = "https://www.rami-levy.co.il/he/online/market/%D7%A7%D7%A4%D7%95%D7%90%D7%99%D7%9D";
 
@@ -29,20 +34,21 @@ public class frozensPage extends basePage {
     }
 
     public void additem() {
-        WebElement web = driver.findElement(By.xpath("//div[1]/div[2][@role='list']"));
+         list = driver.findElement(By.xpath("//div[1]/div[2][@role='list']"));
+         waitTillVisible(driver,10,By.xpath("//div[1]/div[2][@role='list']"));
 
-        WebElement first = web.findElement(By.id("min-height-product-0"));
+        WebElement first = list.findElement(By.id("min-height-product-0"));
         waitTillVisible(driver,10,By.id("min-height-product-0"));
 
         Actions action = new Actions(driver);
         action.moveToElement(first).build().perform();
 
-        WebElement add = driver.findElement( By.id("Capa_1"));
+        add = driver.findElement( By.id("Capa_1"));
         waitTillVisible(driver,10, By.id("Capa_1"));
         add.click();
 
         waitTillVisible(driver,10, By.id("delivery-modal___BV_modal_body_"));
-        WebElement close = driver.findElement(By.id("close-popup"));
+         close = driver.findElement(By.id("close-popup"));
         close.click();
     }
 
@@ -51,8 +57,8 @@ public class frozensPage extends basePage {
         clicktopay.click();
     }
     public void verfyCart(){
-        WebElement cartItems = driver.findElement(By.xpath("//div[@aria-label='1 פריטים בסל. לחץ לפירוט']"));
-        if(cartItems.isDisplayed()){
+          cartItems = driver.findElement(By.xpath("//div[@aria-label='1 פריטים בסל. לחץ לפירוט']"));
+          if(cartItems.isDisplayed()){
             WebElement payment = driver.findElement(By.id("paymentBtn"));
 
 
