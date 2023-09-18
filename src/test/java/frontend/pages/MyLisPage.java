@@ -135,11 +135,6 @@ public void Next(int ret) {
             System.out.println("Finish button not found");
         }
     }
-
-
-
-
-
         public void deletTheList () {
             cancleList = writingArea.findElement(MyListLocators.deleteList);
             cancleList.click();
