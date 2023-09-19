@@ -18,12 +18,11 @@ public class HomePage extends basePage {
     private final String Url = "https://www.rami-levy.co.il/he";
 
     private Actions actions;
-
     private  WebElement searchElemt;
-
     private WebElement gotoMain;
     private WebElement frozenss;
     private WebElement sort;
+    private WebElement login;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -37,7 +36,7 @@ public class HomePage extends basePage {
 
     public void initPage() {
         actions = new Actions(driver);
-
+        login = waitTillVisible(driver,20,MainPageLocators.LOGINUSER);
     }
 
 
@@ -59,6 +58,9 @@ public class HomePage extends basePage {
     public void sortFromCheapTo(){
         sort = driver.findElement(MainPageLocators.sorting);
         sort.click();
+    }
+    public String getLogin(){
+        return login.getText();
     }
 
     public void refresh(){
