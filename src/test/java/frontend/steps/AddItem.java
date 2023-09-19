@@ -3,9 +3,6 @@ package frontend.steps;
 import frontend.context.TextContext;
 import io.cucumber.java.en.*;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class AddItem {
     public TextContext textContext;
 
@@ -13,10 +10,9 @@ public class AddItem {
         this.textContext = textContext;
     }
     @Given("I am logged in")
-    public void i_am_logged_in()  throws URISyntaxException, IOException, InterruptedException {
+    public void i_am_logged_in() throws Exception {
         textContext.getHomePage();
         textContext.login(textContext.getEmail(), textContext.getPassword());
-        textContext.getHomePage().refresh();
     }
     @When("I add an item")
     public void i_add_an_item() {
