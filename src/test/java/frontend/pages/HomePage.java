@@ -42,24 +42,37 @@ public class HomePage extends basePage {
 
 
         public void searchstuff(String item){
-            searchElemt= driver.findElement(MainPageLocators.search);
+            searchElemt= waitTillVisible(driver,10,MainPageLocators.search);
             searchElemt.sendKeys(item);
             searchElemt.sendKeys(Keys.RETURN);
 
         }
         public void returnToMain(){
-            gotoMain = driver.findElement(MainPageLocators.mainPage);
-            gotoMain.click();
+            waitTillClickable(driver,10,MainPageLocators.mainPage);
+
         }
 
         public void goToFrozen(){
-            frozenss = driver.findElement(MainPageLocators.frozens);
-            frozenss.click();
+            waitTillClickable(driver,10,MainPageLocators.frozens);
+
         }
-        public void sortFromCheapTo(){
-            sort = driver.findElement(MainPageLocators.sorting);
-            sort.click();
-        }
+//        public void sortFromCheapTo(int retry){
+//            int maxret = 0;
+//
+//            while (maxret < retry) {
+//                try {
+//                  WebElement web=  waitTillVisible(driver, 10, MainPageLocators.sorting);
+//                  if(web !=null){
+//                      break;
+//                  }
+//                 maxret++;
+//
+//                } catch (Exception e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//
+//            }
         public String getLogin(){
             return login.getText();
         }
