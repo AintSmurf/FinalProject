@@ -3,6 +3,7 @@ package frontend.locators;
 import org.openqa.selenium.By;
 
 public class MainPageLocators {
+    public static By LOGINUSER = By.id("login-user");
     public static By search = By.id("destination");
     public static By cart = By.xpath("//*[@id=\"onlineCartHeader\"]/div[1]/div[1]/span/svg");
     public static By filter= By.xpath("//*[@id=\"search\"]/div/div/div[1]/div/div[1]/div/div[1]/div[3]");
