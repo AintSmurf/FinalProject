@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 
+@Slf4j
 public class HttpHelper {
     private static HttpResponseAndFormattedJson httpResponseAndFormattedJson;
     private static JavascriptExecutor js;
@@ -29,10 +30,10 @@ public class HttpHelper {
         httpResponseAndFormattedJson =  HttpFacade.post(url,userDet, User.class);
         return (User) httpResponseAndFormattedJson.getData();
     }
-    public static void login(WebDriver driver,String email,String password) throws URISyntaxException, IOException, InterruptedException {
-         js = (JavascriptExecutor)driver;
-        String json = getToken(email,password);
-        Utils.waitTillScriptExecutedStringFormat(driver,20,json,20);
-        Utils.waitTillScriptExecuted(driver, 20, "return localStorage.getItem('ramilevy') !== null;");
+    public static void login(WebDriver driver, String email, String password) throws URISyntaxException, IOException, InterruptedException {
+        String json = getToken(email, password);
+        Utils.waitTillScriptExecutedStringFormat(driver, 20, json, 50);
+        Utils.waitTillScriptExecuted(driver, 30, "return window.localStorage.getItem('ramilevy') !== null;");
     }
+
 }

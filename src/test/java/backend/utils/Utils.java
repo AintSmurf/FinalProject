@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.util.HashMap;
 @Slf4j
 public class Utils {
+    private static JavascriptExecutor js;
     public static  HashMap<String,String> getUserNameMap(String email,String password){
         HashMap<String,String> userDet = new HashMap<>();
         userDet.put("username",email);
@@ -17,12 +18,22 @@ public class Utils {
         return  userDet;
     }
     public static void waitTillScriptExecuted(WebDriver driver, int timeout, String script) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+         js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(webDriver -> (Boolean) js.executeScript(script));
+
+       wait.until(webDriver -> {
+            try {
+                js.executeScript(script);
+                return true;
+            } catch (Exception e) {
+                log.error("couldn't execute the script\nreason:" + e);
+                return false;
+            }
+        });
     }
+
     public static void waitTillScriptExecutedStringFormat(WebDriver driver, int timeout, String json, int maxRetries) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+         js = (JavascriptExecutor) driver;
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         String script = "window.localStorage.setItem('ramilevy', JSON.stringify(" + json + "));";
 
@@ -33,7 +44,7 @@ public class Utils {
             try {
                 scriptExecuted = wait.until(webDriver -> {
                     try {
-                        ((JavascriptExecutor) driver).executeScript(script);
+                        js.executeScript(script);
                         return true;
                     } catch (Exception e) {
                         log.error("couldn't execute the script\nreason:"+e);
@@ -53,7 +64,9 @@ public class Utils {
         if (!scriptExecuted) {
             log.error("Script execution failed after " + maxRetries + " retries.");
         }
+        if (scriptExecuted) log.info("suceffully exectued the script.");
     }
+
 
 
 }
