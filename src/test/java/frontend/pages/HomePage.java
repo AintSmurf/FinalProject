@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.swing.*;
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HomePage extends basePage {
 
@@ -24,6 +25,7 @@ public class HomePage extends basePage {
         private WebElement frozenss;
         private WebElement sort;
         private WebElement login;
+        private String currentUrl;
 
         public HomePage(WebDriver driver) {
             super(driver);
@@ -41,12 +43,25 @@ public class HomePage extends basePage {
         }
 
 
-        public void searchstuff(String item){
-            searchElemt= waitTillVisible(driver,10,MainPageLocators.search);
-            searchElemt.sendKeys(item);
-            searchElemt.sendKeys(Keys.RETURN);
+    public void searchStuff(String item) {
+        WebElement searchElement = waitTillVisible(driver, 10, MainPageLocators.search);
+        searchElement.sendKeys(item);
+        searchElement.sendKeys(Keys.RETURN);
 
-        }
+        // Wait for the page to load if necessary
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlContains("search")); // You can customize this condition
+
+        // Get the current URL after the page has loaded
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println(currentUrl);
+    }
+
+    public String getCurrentUrl() {
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println(currentUrl);
+        return currentUrl;
+    }
         public void returnToMain(){
             waitTillClickable(driver,10,MainPageLocators.mainPage);
 

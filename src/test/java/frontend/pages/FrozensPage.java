@@ -1,6 +1,5 @@
 package frontend.pages;
 
-import frontend.locators.MainPageLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
-public class frozensPage extends basePage {
+public class FrozensPage extends basePage {
     private  WebElement cartItems;
     private  WebElement close;
     private WebElement add;
@@ -18,7 +17,7 @@ public class frozensPage extends basePage {
     private WebElement clicktopay;
     private final String Url = "https://www.rami-levy.co.il/he/online/market/%D7%A7%D7%A4%D7%95%D7%90%D7%99%D7%9D";
 
-    public frozensPage(WebDriver driver) {
+    public FrozensPage(WebDriver driver) {
         super(driver);
         driver.navigate().to(Url);
 

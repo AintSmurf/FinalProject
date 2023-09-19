@@ -59,9 +59,9 @@ public class Hooks {
                 log.error("Failed to take screenshot.");
             }
         }
-//        if (driver != null) {
-//            driver.close();
-//            log.info("driver is closed.");
-//        }
+        if (driver != null) {
+            driver.close();
+            log.info("driver is closed.");
+        }
     }
 }

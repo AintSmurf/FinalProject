@@ -1,6 +1,7 @@
 package frontend.context;
 
 import backend.HttpHelper;
+import frontend.pages.FrozensPage;
 import frontend.pages.HomePage;
 import frontend.utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import java.net.URISyntaxException;
 
 @Slf4j
 public class TextContext {
+    private HomePage homePage;
 
     public void login(String email, String password) throws URISyntaxException, IOException, InterruptedException {
         int ret = 0;
@@ -27,7 +29,14 @@ public class TextContext {
 
     public HomePage getHomePage() {
         log.info("Trying to access homepage.");
-        return new HomePage(WebDriverManager.initlaizeDriver());
+        if (homePage == null) {
+            homePage = new HomePage(WebDriverManager.initlaizeDriver());
+        }
+        return homePage;
+    }
+    public FrozensPage getFrozen(){
+        log.info("trying to go to frozen");
+        return new FrozensPage(WebDriverManager.initlaizeDriver());
     }
 
     public String getEmail() throws Exception {
