@@ -2,6 +2,7 @@ package frontend.steps;
 
 import frontend.context.TextContext;
 import io.cucumber.java.en.*;
+import org.junit.Assert;
 
 public class AddItem {
     public TextContext textContext;
@@ -15,16 +16,26 @@ public class AddItem {
         textContext.getHomePage();
         textContext.login("knawras17@gmail.com", "123nawras");
     }
-    @When("I add an item")
-    public void i_add_an_item() {
 
-        System.out.println("dsadsad");
+    @When("i got to frozens section")
+    public void i_got_to_frozens_section() {
+        textContext.getFrozen().Navigate();
+    }
+    @And("i add a random item")
+    public void i_add_a_random_item() throws InterruptedException{
+         textContext.getFrozen().addItemsToCart();
+        Thread.sleep(5000);
+        textContext.getFrozen().close();
+
     }
     @Then("the cart has a single item in it")
-    public void the_cart_has_a_single_item_in_it() {
+    public void the_cart_has_a_single_item_in_it() throws InterruptedException {
+        textContext.getFrozen().opencart();
+        Thread.sleep(5000);
+       Assert.assertEquals(1,textContext.getFrozen().verfyCart());
 
-        System.out.println("hello");
+
+
+
     }
-
-
-}
+    }

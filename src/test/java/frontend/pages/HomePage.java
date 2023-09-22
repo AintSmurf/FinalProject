@@ -1,7 +1,6 @@
 package frontend.pages;
 
 import frontend.locators.MainPageLocators;
-import frontend.locators.MyListLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.swing.*;
 import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class HomePage extends basePage {
 
@@ -26,6 +22,7 @@ public class HomePage extends basePage {
         private WebElement sort;
         private WebElement login;
         private String currentUrl;
+        private WebElement cart;
 
         public HomePage(WebDriver driver) {
             super(driver);
@@ -48,11 +45,11 @@ public class HomePage extends basePage {
         searchElement.sendKeys(item);
         searchElement.sendKeys(Keys.RETURN);
 
-        // Wait for the page to load if necessary
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.urlContains("search")); // You can customize this condition
 
-        // Get the current URL after the page has loaded
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlContains("search"));
+
+
         String currentUrl = driver.getCurrentUrl();
         System.out.println(currentUrl);
     }
@@ -88,7 +85,16 @@ public class HomePage extends basePage {
 //            }
 //
 //            }
-        public String getLogin(){
+public void gotoCheckOut() {
+
+    WebElement v = waitTillVisible(driver, 20, By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[2]/div/div[2]/div[3]/div/div[2]"));
+    v.click();
+
+}
+
+
+
+    public String getLogin(){
             return login.getText();
         }
 

@@ -1,25 +1,28 @@
 package frontend.pages;
 
-import frontend.locators.MyListLocators;
+import frontend.locators.QuieckPurchesLocators;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyLisPage extends basePage {
+public class QuiekPurchesPage extends basePage {
     private final String Url = "https://www.rami-levy.co.il/he";
     private WebElement creatList;
     private WebElement writingArea;
     private Actions actions;
 
     private WebElement cancleList;
+    private WebElement listBack;
+    private WebElement finishButton;
+    private WebElement searchResultItems;
+
     private WebElement popupToDelet;
     private WebElement confirmationTodelete;
 
-    public MyLisPage(WebDriver driver) {
+
+    public QuiekPurchesPage(WebDriver driver) {
         super(driver);
         this.getUrl();
     }
@@ -30,31 +33,31 @@ public class MyLisPage extends basePage {
     }
 
     public void initPage() {
-        creatList = driver.findElement(MyListLocators.createList);
+        creatList = driver.findElement(QuieckPurchesLocators.createList);
         actions = new Actions(driver);
     }
 
-    public void openList() {
-        waitTillClickable(driver, 10, MyListLocators.createList);
+    public void openFastPurches() {
+        waitTillClickable(driver, 10, QuieckPurchesLocators.createList);
     }
-
-    public void writeList(String[] list) {
-        writingArea = driver.findElement(MyListLocators.productsList);
-        waitTillVisible(driver, 10, MyListLocators.productsList);
-        for (int i = 0; i < list.length; i++) {
-            actions.sendKeys(writingArea, list[i]).build().perform();
+// writing on the quiech purches list
+    public void writeList(List<String> list) {
+        writingArea = driver.findElement(QuieckPurchesLocators.productsList);
+        waitTillVisible(driver, 10, QuieckPurchesLocators.productsList);
+        for (int i = 0; i < list.size(); i++) {
+            actions.sendKeys(writingArea, list.get(i)).build().perform();
             this.newline();
         }
     }
-
+//new line for each word on the list
     public void newline() {
         actions.keyDown(Keys.SHIFT).sendKeys(writingArea, Keys.ENTER).keyUp(Keys.SHIFT).build().perform();
     }
-
+// click on המשך after writting the prducts
     public void Contunie(int ret) throws InterruptedException {
         int maxret = 0;
         while (maxret < ret) {
-            WebElement temp = writingArea.findElement(MyListLocators.contunie);
+            WebElement temp = writingArea.findElement(QuieckPurchesLocators.contunie);
             temp.click();
             if(temp!=null){
                 break;
@@ -64,27 +67,15 @@ public class MyLisPage extends basePage {
 
     }
 
-//    public void Next(int ret) {
-//        int maxret = 0;
-//        while (maxret < ret) {
-//
-//            WebElement nex = driver.findElement(By.xpath("//div[@aria-label='הבא']"));
-//            waitTillVisible(driver,10,By.xpath("//div[@aria-label='הבא']"));
-//            nex.click();
-//            if (nex != null) {
-//                break;
-//            }
-//            ret++;
-//        }
-//    }
-public void Next(int ret) {
-    int maxret = 0;
+// click on הבא
+     public void Next(int ret) {
+        int maxret = 0;
 
-    while (maxret < ret) {
-        try {
-            waitTillClickable(driver,10,By.xpath("//div[@aria-label='הבא']"));
+         while (maxret < ret) {
+             try {
+                waitTillClickable(driver,10,By.xpath("//div[@aria-label='הבא']"));
 
-            break;
+                break;
         } catch (Exception e) {
             System.out.println("Element not found ");
         }
@@ -97,7 +88,7 @@ public void Next(int ret) {
         int ret = 0;
         int count = 0;
         while (ret < retry) {
-            WebElement searchResultItems = waitTillVisible(driver, 10, MyListLocators.results);
+             searchResultItems = waitTillVisible(driver, 10, QuieckPurchesLocators.results);
             System.out.println(searchResultItems);
             List<WebElement> elements = searchResultItems.findElements(By.xpath("//div[@class='product-gallery-wrap flex-row-50 big-plus-minus item-card position-relative is-buy-list']"));
             List<WebElement> buttons = new ArrayList<>();
@@ -126,25 +117,45 @@ public void Next(int ret) {
         }
     }
 
+
     public void finishTheList() {
-        WebElement finishButton = driver.findElement(By.xpath("//div[@aria-label='סיימתי, בלחיצה על כפתור זה המוצרים יתווספו לסל']"));
+         finishButton = driver.findElement(QuieckPurchesLocators.finished);
 
         if (finishButton != null) {
-            waitTillClickable(driver,10,By.xpath("//div[@aria-label='סיימתי, בלחיצה על כפתור זה המוצרים יתווספו לסל']"));
+            waitTillClickable(driver,10,QuieckPurchesLocators.finished);
         } else {
             System.out.println("Finish button not found");
         }
     }
         public void deletTheList () {
-            cancleList = writingArea.findElement(MyListLocators.deleteList);
+
+            cancleList =waitTillVisible(driver,10, QuieckPurchesLocators.deleteList);
             cancleList.click();
 
-            popupToDelet = writingArea.findElement(MyListLocators.popupDelet);
-            waitTillVisible(driver, 10, MyListLocators.popupDelet);
+          waitTillVisible(driver, 10, QuieckPurchesLocators.popupDelet);
 
-            confirmationTodelete = popupToDelet.findElement(MyListLocators.confirmationdelete);
-            waitTillClickable(driver, 10, MyListLocators.confirmationdelete);
+            waitTillClickable(driver, 10, QuieckPurchesLocators.confirmationdelete);
         }
 
+        public void backtoList(){
+        listBack = driver.findElement(QuieckPurchesLocators.goTolist);
+        listBack.click();
+        }
+        public boolean checkIfTheListEmpty(){
+            WebElement textarea = driver.findElement(By.id("list-product"));
+            String valuein = textarea.getAttribute("value");
+         if (valuein.isEmpty()==true) {
+             return true;
+         }
+         else {
+             return false;
+         }
+
+        }
+
+    public void close(){
+        this.closeBrowser();
     }
+
+}
 

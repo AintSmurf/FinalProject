@@ -3,9 +3,9 @@ package frontend.context;
 import backend.HttpHelper;
 import frontend.pages.FrozensPage;
 import frontend.pages.HomePage;
+import frontend.pages.QuiekPurchesPage;
 import frontend.utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -38,6 +38,10 @@ public class TextContext {
         log.info("trying to go to frozen");
         return new FrozensPage(WebDriverManager.initlaizeDriver());
     }
+    public QuiekPurchesPage myList(){
+        log.info("trying to ceate list of products");
+        return new QuiekPurchesPage(WebDriverManager.initlaizeDriver());
+    }
 
     public String getEmail() throws Exception {
         String email = System.getenv("EMAIL");
@@ -55,5 +59,6 @@ public class TextContext {
         }
         return password;
     }
+
 }
 
