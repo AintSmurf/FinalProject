@@ -25,7 +25,9 @@ public class Main {
       // page.refresh();
      fro.addItemsToCart();
      fro.close();
-    fro.verfyCart();
+    fro.removeCart();
+
+    fro.EmptyCart();
 
 
    //  fro.goToVhrckOut();

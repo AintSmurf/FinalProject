@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class FrozensPage extends basePage {
     private WebElement cartItems;
@@ -90,12 +91,16 @@ public class FrozensPage extends basePage {
 
 
     public int verfyCart() throws InterruptedException {
-        WebElement ulElement = driver.findElement(By.xpath("//ul[@data-v-46f5e6cc='']"));
-        int ulSize = ulElement.findElements(By.tagName("li")).size();
+        WebElement cartProducts = driver.findElement(By.xpath("//ul[@data-v-46f5e6cc='']"));
+        int ulSize = cartProducts.findElements(By.tagName("li")).size();
         return ulSize;
-
-
     }
+    public String EmptyCart() {
+        WebElement cart = waitTillVisible(driver, 30, By.xpath("//div[@class='z-index-9 position-fixed bottom-5 w-95']"));
+        String pricenValue = cart.getText();
+        return pricenValue;
+    }
+
 
     public void sortFromCheapTo(int retry){
         int maxret = 0;
@@ -110,6 +115,14 @@ public class FrozensPage extends basePage {
         WebElement cheapest = waitTillVisible(driver,10,By.xpath("//li[@class='sort-list-item gray-hover border-radius-10 py-2 m-1']"));
         cheapest.click();
 
+    }
+
+    public void removeCart(){
+        WebElement remove = waitTillVisible(driver,10,By.id("remove-cart"));
+        remove.click();
+
+       WebElement confirm= waitTillVisible(driver,10,By.xpath("//button[@id='delete-cart-btn']"));
+        confirm.click();
     }
 
     }
