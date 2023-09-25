@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -46,8 +48,15 @@ public class QuikPurchesToENd {
     }
     @Then("I have the products in the cart")
     public void iHaveTheProductsInTheCart() {
-       int x= textContext.getHomePage().verifyProductInTheCart();
-        Assert.assertEquals(4,x);
+        List<String> expectedOutput = new ArrayList<>(Arrays.asList(
+                "שוקו יטבתה 1 ליטר",
+                "בונבוניירת פררו רושה 200 גרם",
+                "במבה חטיף בוטנים אסם 80 גרם",
+                "מחיר משלוח"
+        ));
+        List<String> actuallOutput = textContext.getHomePage().verifyProductInTheCart();
+        Assert.assertEquals(expectedOutput,actuallOutput);
+
 
     }
 

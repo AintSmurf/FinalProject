@@ -197,13 +197,22 @@ public void gotoCheckOut() {
         }
 
     }
-    public int verifyProductInTheCart(){
+    public ArrayList<String> verifyProductInTheCart(){
+       ArrayList<String> names = new ArrayList<>();
         WebElement cartProducts =waitTillVisible(driver,10,By.xpath("//div[@aria-label='סל קניות']"));
         WebElement products= waitTillVisible(driver,10,By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
 
         WebElement listproducts = products.findElement(By.cssSelector("#market > ul"));
-        int ulSize = listproducts.findElements(By.tagName("li")).size();
-        return ulSize;
+        List<WebElement> listofTheeachProduct = listproducts.findElements(By.tagName("li"));
+        for (WebElement oneProduct: listofTheeachProduct) {
+
+            WebElement productNameElement = oneProduct.findElement(By.cssSelector("div.item-name"));
+            String productName = productNameElement.getText();
+            names.add(productName);
+
+
+        }
+        return names;
 
     }
 
