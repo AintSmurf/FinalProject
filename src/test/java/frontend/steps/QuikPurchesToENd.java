@@ -15,29 +15,38 @@ public class QuikPurchesToENd {
         this.textContext = textContext;
     }
 
-    @Given("I am on the home pag")
-    public void i_am_on_the_home_pagee() {
+    @Given(": iam on homepage")
+    public void iamOnHomepage() {
         textContext.getHomePage();
     }
-    @Given("I open myList tapp")
-    public void i_open_my_list_tapp()  {
+
+
+    @And(": i click on QuickBuy")
+    public void iClickOnQuickBuy() {
         textContext.getHomePage().openFastPurches();
+
     }
 
-    @When("adding these proucts:")
-    public void i_add_the_these_products_to_the_list(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
-        List<String> productsToAdd = dataTable.asList(String.class);
-        textContext.myList().writeList(productsToAdd);
-        textContext.myList().Contunie(2);
-        textContext.myList().add(3, 2);
+    @When("I write the products:")
+    public void iWriteTheProducts(List<String> productsToAdd) {
+        textContext.getHomePage().writeList(productsToAdd);
+    }
+
+    @And("I start adding all of them to the cart")
+    public void iStartAddingAllOfThemToTheCart() throws InterruptedException {
+        textContext.getHomePage().Contunie(2);
+        textContext.getHomePage().add(3,2);
     }
     @And("click on finished")
     public void click_on_finished(){
-        textContext.myList().finishTheList();
+        textContext.getHomePage().finishTheList();
     }
 
     @Then("I have milk and meat and icecream on my cart")
     public void i_have_milk_and_meat_and_icecream_on_my_cart() {
 
+
     }
+
+
 }

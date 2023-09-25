@@ -38,13 +38,12 @@ public class QuiekPurchesPage extends basePage {
         actions = new Actions(driver);
     }
 
-//    public void openFastPurches(int maxret) {
-//
-//
+
+//    public void openFastPurches() {
 //            WebElement quik = waitTillVisible(driver, 10, QuieckPurchesLocators.createList);
 //            quik.click();
 //
-//    }
+//   }
 
 
 
@@ -156,7 +155,7 @@ public class QuiekPurchesPage extends basePage {
              return true;
          }
          else {
-             return false;
+            return false;
          }
 
         }
