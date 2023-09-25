@@ -3,7 +3,8 @@ package frontend.locators;
 import org.openqa.selenium.By;
 
 public class QuieckPurchesLocators {
-    public static By createList = By.cssSelector("#quick-buy-btn");
+    public static By createList = By.id("quick-buy-btn");
+
     public static By productsList= By.id("list-product");
     public static By contunie = By.xpath("//div[@aria-label='המשך']");
 

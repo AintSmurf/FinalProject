@@ -1,6 +1,7 @@
 package frontend.pages;
 
 import frontend.locators.MainPageLocators;
+import frontend.locators.QuieckPurchesLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -16,13 +17,10 @@ public class HomePage extends basePage {
         private final String Url = "https://www.rami-levy.co.il/he";
 
         private Actions actions;
-        private  WebElement searchElemt;
-        private WebElement gotoMain;
-        private WebElement frozenss;
-        private WebElement sort;
+
+
         private WebElement login;
-        private String currentUrl;
-        private WebElement cart;
+
 
         public HomePage(WebDriver driver) {
             super(driver);
@@ -68,29 +66,18 @@ public class HomePage extends basePage {
             waitTillClickable(driver,10,MainPageLocators.frozens);
 
         }
-//        public void sortFromCheapTo(int retry){
-//            int maxret = 0;
-//
-//            while (maxret < retry) {
-//                try {
-//                  WebElement web=  waitTillVisible(driver, 10, MainPageLocators.sorting);
-//                  if(web !=null){
-//                      break;
-//                  }
-//                 maxret++;
-//
-//                } catch (Exception e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//
-//            }
+
 public void gotoCheckOut() {
 
     WebElement v = waitTillVisible(driver, 20, By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[2]/div/div[2]/div[3]/div/div[2]"));
     v.click();
 
 }
+    public void openFastPurches() {
+        WebElement quik = waitTillVisible(driver, 10, QuieckPurchesLocators.createList);
+        quik.click();
+    }
+
 
 
 

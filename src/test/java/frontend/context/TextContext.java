@@ -4,6 +4,7 @@ import backend.HttpHelper;
 import frontend.pages.FrozensPage;
 import frontend.pages.HomePage;
 import frontend.pages.QuiekPurchesPage;
+import frontend.pages.SortedFrozenPage;
 import frontend.utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,10 +17,11 @@ public class TextContext {
 
     public void login(String email, String password) throws URISyntaxException, IOException, InterruptedException {
         int ret = 0;
-        while(ret < 10){
+        while (ret < 10) {
             HttpHelper.login(WebDriverManager.initlaizeDriver(), email, password);
-            if(this.getHomePage().getLogin() != null){break;}
-            else {
+            if (this.getHomePage().getLogin() != null) {
+                break;
+            } else {
                 log.error("failed to execute the script.");
                 ret++;
             }
@@ -34,13 +36,18 @@ public class TextContext {
         }
         return homePage;
     }
-    public FrozensPage getFrozen(){
+
+    public FrozensPage getFrozen() {
         log.info("trying to go to frozen");
         return new FrozensPage(WebDriverManager.initlaizeDriver());
     }
-    public QuiekPurchesPage myList(){
+
+    public QuiekPurchesPage myList() {
         log.info("trying to ceate list of products");
         return new QuiekPurchesPage(WebDriverManager.initlaizeDriver());
+    }
+    public SortedFrozenPage sorted(){
+        return new SortedFrozenPage(WebDriverManager.initlaizeDriver());
     }
 
     public String getEmail() throws Exception {

@@ -55,6 +55,10 @@ public class FrozensPage extends basePage {
 
 
             randomProduct.click();
+            //saving the product price to assert later
+//            WebElement priceElement = randomProduct.findElement(By.xpath(".//div[@data-v-49951636]//span[contains(@class, 'currency-wrap')]/span[1]"));
+//            String productPrice = priceElement.getText();
+
             waitTillVisible(driver, 10, By.xpath("//button[@class='focus-item btn-acc plus no-select']")).click();
         }
 
@@ -62,6 +66,7 @@ public class FrozensPage extends basePage {
         System.out.println(modle);
         WebElement close = modle.findElement(By.id("close-popup"));
         close.click();
+
     }
 
     public void close() throws InterruptedException {
@@ -85,37 +90,32 @@ public class FrozensPage extends basePage {
 
 
     public int verfyCart() throws InterruptedException {
-
-
-        WebElement elements = driver.findElement(By.xpath("//div[@aria-label='1 פריטים בסל. לחץ לפירוט']"));
-        elements.click();
-Thread.sleep(3000);
-        List<WebElement> items = driver.findElements(By.xpath("//div[@class='inner-scroll rl-scroll']"));
-          waitTillVisible(driver,10,By.xpath("//div[@class='inner-scroll rl-scroll']"));
-          return items.size();
+        WebElement ulElement = driver.findElement(By.xpath("//ul[@data-v-46f5e6cc='']"));
+        int ulSize = ulElement.findElements(By.tagName("li")).size();
+        return ulSize;
 
 
     }
 
     public void sortFromCheapTo(int retry){
         int maxret = 0;
-
         while (maxret < retry) {
-            try {
-                WebElement web=  waitTillVisible(driver, 10, By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
-                web.click();
-                if(web !=null){
-                    break;
-                }
-                maxret++;
+            waitTillVisible(driver,10,By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
 
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                waitTillClickable(driver, 10, By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
+
+                maxret++;
         }
+        waitTillClickable(driver,10,By.xpath("//button[@aria-label='אפשרויות מיון וסינון, מיין לפי רלוונטיות']"));
+        WebElement cheapest = waitTillVisible(driver,10,By.xpath("//li[@class='sort-list-item gray-hover border-radius-10 py-2 m-1']"));
+        cheapest.click();
 
     }
-}
+
+    }
+
+
+
 
 
 

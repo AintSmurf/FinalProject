@@ -23,10 +23,11 @@ public class Main {
      //   fro.sortFromCheapTo(3);
 
       // page.refresh();
-//        fro.chooseTheItem();
      fro.addItemsToCart();
      fro.close();
-     fro.verfyCart();
+    fro.verfyCart();
+
+
    //  fro.goToVhrckOut();
      //fro.verfyCart();
 //   lisPage.openFastPurches();

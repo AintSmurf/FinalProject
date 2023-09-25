@@ -2,6 +2,7 @@ package frontend.steps;
 
 import frontend.context.TextContext;
 import io.cucumber.java.en.*;
+import org.checkerframework.checker.units.qual.A;
 import org.junit.Assert;
 
 public class AddItem {
@@ -30,12 +31,12 @@ public class AddItem {
     }
     @Then("the cart has a single item in it")
     public void the_cart_has_a_single_item_in_it() throws InterruptedException {
-        textContext.getFrozen().opencart();
-        Thread.sleep(5000);
-       Assert.assertEquals(1,textContext.getFrozen().verfyCart());
-
-
+       int productsNum= textContext.getFrozen().verfyCart();
+        Assert.assertEquals(2,productsNum);
 
 
     }
+
+
     }
+

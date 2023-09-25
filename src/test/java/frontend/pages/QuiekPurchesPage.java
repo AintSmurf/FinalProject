@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class QuiekPurchesPage extends basePage {
     private final String Url = "https://www.rami-levy.co.il/he";
@@ -37,13 +38,20 @@ public class QuiekPurchesPage extends basePage {
         actions = new Actions(driver);
     }
 
-    public void openFastPurches() {
-        waitTillClickable(driver, 10, QuieckPurchesLocators.createList);
-    }
+//    public void openFastPurches(int maxret) {
+//
+//
+//            WebElement quik = waitTillVisible(driver, 10, QuieckPurchesLocators.createList);
+//            quik.click();
+//
+//    }
+
+
+
 // writing on the quiech purches list
     public void writeList(List<String> list) {
-        writingArea = driver.findElement(QuieckPurchesLocators.productsList);
-        waitTillVisible(driver, 10, QuieckPurchesLocators.productsList);
+      writingArea = waitTillVisible(driver, 10, QuieckPurchesLocators.productsList);
+//       waitTillClickable(driver,10,writingArea);
         for (int i = 0; i < list.size(); i++) {
             actions.sendKeys(writingArea, list.get(i)).build().perform();
             this.newline();
