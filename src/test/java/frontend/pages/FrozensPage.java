@@ -91,8 +91,11 @@ public class FrozensPage extends basePage {
 
 
     public int verfyCart() throws InterruptedException {
-        WebElement cartProducts = driver.findElement(By.xpath("//ul[@data-v-46f5e6cc='']"));
-        int ulSize = cartProducts.findElements(By.tagName("li")).size();
+        WebElement cartProducts =waitTillVisible(driver,10,By.xpath("//div[@aria-label='סל קניות']"));
+        WebElement products= waitTillVisible(driver,10,By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
+
+        WebElement listproducts = products.findElement(By.cssSelector("#market > ul"));
+        int ulSize = listproducts.findElements(By.tagName("li")).size();
         return ulSize;
     }
     public String EmptyCart() {

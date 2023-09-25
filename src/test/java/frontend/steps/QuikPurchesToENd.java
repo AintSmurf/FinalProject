@@ -5,46 +5,49 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_scouse.An;
+import org.junit.Assert;
 
 import java.util.List;
 
+
 public class QuikPurchesToENd {
     private TextContext textContext;
+
     public QuikPurchesToENd(TextContext textContext) {
         this.textContext = textContext;
     }
 
-    @Given(": iam on homepage")
-    public void iamOnHomepage() {
+    @Given("I am on homepage")
+    public void iAmOnHomepage() {
         textContext.getHomePage();
+        
     }
 
-
-    @And(": i click on QuickBuy")
+    @And("I click on QuickBuy")
     public void iClickOnQuickBuy() {
         textContext.getHomePage().openFastPurches();
-
+        
     }
 
-    @When("I write the products:")
-    public void iWriteTheProducts(List<String> productsToAdd) {
-        textContext.getHomePage().writeList(productsToAdd);
+    @When("I start add these products:")
+    public void iStartAddTheseProducts(List<String> ProductsToAdd) {
+        textContext.getHomePage().writeList(ProductsToAdd);
     }
 
-    @And("I start adding all of them to the cart")
-    public void iStartAddingAllOfThemToTheCart() throws InterruptedException {
+    @And("I start adding all of the products to the cart")
+    public void iStartAddingAllOfTheProductsToTheCart() throws InterruptedException {
         textContext.getHomePage().Contunie(2);
-        textContext.getHomePage().add(3,2);
+        textContext.getHomePage().add(3,1);
     }
     @And("click on finished")
-    public void click_on_finished(){
+    public void clickOnFinished() {
         textContext.getHomePage().finishTheList();
+
     }
-
-    @Then("I have milk and meat and icecream on my cart")
-    public void i_have_milk_and_meat_and_icecream_on_my_cart() {
-
+    @Then("I have the products in the cart")
+    public void iHaveTheProductsInTheCart() {
+       int x= textContext.getHomePage().verifyProductInTheCart();
+        Assert.assertEquals(4,x);
 
     }
 

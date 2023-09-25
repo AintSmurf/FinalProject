@@ -1,11 +1,15 @@
 Feature: create a a Quick Buy
+
+  Background:
+    Given I am on homepage
+    And I click on QuickBuy
+
   Scenario: Add products to the cart from my Quick Buy list
-    Given : iam on homepage
-    And : i click on QuickBuy
-    When I write the products:
-      | גלידה     |
-      | בשר     |
-      | שוקלוד |
-    And I start adding all of them to the cart
+    When I start add these products:
+      | במבה  |
+      | שוקו  |
+      | פררו  |
+    And I start adding all of the products to the cart
     And click on finished
-    Then I have milk and meat and icecream on my cart
+    Then I have the products in the cart
+

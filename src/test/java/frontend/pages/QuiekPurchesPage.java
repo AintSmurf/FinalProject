@@ -6,7 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class QuiekPurchesPage extends basePage {
     private final String Url = "https://www.rami-levy.co.il/he";
@@ -157,6 +156,16 @@ public class QuiekPurchesPage extends basePage {
          else {
             return false;
          }
+
+
+        }
+        public int verifyProductInTheCart(){
+            WebElement cartProducts =waitTillVisible(driver,10,By.xpath("//div[@aria-label='סל קניות']"));
+            WebElement products= waitTillVisible(driver,10,By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
+
+            WebElement listproducts = products.findElement(By.cssSelector("#market > ul"));
+            int ulSize = listproducts.findElements(By.tagName("li")).size();
+            return ulSize;
 
         }
 

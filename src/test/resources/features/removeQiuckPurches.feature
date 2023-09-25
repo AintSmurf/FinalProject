@@ -3,9 +3,9 @@ Feature: create a a QuickBuy list and preform on it
     Given : i'am on home page
     And : i click on QuickBuy
     When I write the products:
-      | גלידה     |
-      | בשר     |
-      | שוקלוד |
+      | גלידה |
+      | בשר   |
+      | שוקולד|
     And I start adding all of them to the cart
     Then I remove it
     And I have an empty list
