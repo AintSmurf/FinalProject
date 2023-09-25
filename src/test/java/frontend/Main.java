@@ -2,6 +2,7 @@ package frontend;
 
 import backend.HttpHelper;
 import frontend.pages.FrozensPage;
+import frontend.pages.HomePage;
 import frontend.pages.QuiekPurchesPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,7 +18,7 @@ public class Main {
         WebDriver driver = new ChromeDriver();
 //        driver.get("https://www.rami-levy.co.il/he");
 //        HttpHelper.login(driver,"knawras17@gmail.com","123nawras");
-         QuiekPurchesPage lisPage=new QuiekPurchesPage(driver);
+//         QuiekPurchesPage lisPage=new QuiekPurchesPage(driver);
 
       //  HomePage page=new HomePage(driver);
 //   FrozensPage fro = new FrozensPage(driver);
@@ -35,24 +36,37 @@ public class Main {
    //  fro.goToVhrckOut();
      //fro.verfyCart();
       // lisPage.openFastPurches();
-        List<String> productsToAdd = Arrays.asList("בשר", "מים", "גלידה");
-
-      lisPage.writeList(productsToAdd);
-       lisPage.Contunie(2);
-        lisPage.add(3, 2);
-        lisPage.backtoList();
-         lisPage.deletTheList();
-         lisPage.checkIfTheListEmpty();
-
-        // lisPage.add(3,1);
-
+//        List<String> productsToAdd = Arrays.asList("בשר", "מים", "גלידה");
+//
+//      lisPage.writeList(productsToAdd);
+//       lisPage.Contunie(2);
+//        lisPage.add(3, 1);
+////        lisPage.backtoList();
+////         lisPage.deletTheList();
+////         lisPage.checkIfTheListEmpty();
+//
+//        // lisPage.add(3,1);
+//
 //      lisPage.finishTheList();
 //        HomePage page=new HomePage(driver);
 //        page.gotoCheckOut();
 
 //
 //
-//      HomePage page=new HomePage(driver);
+      HomePage page=new HomePage(driver);
+        List<String> productsToAdd = Arrays.asList("במבה", "שוקו", "פררו");
+        page.openFastPurches();
+        page.writeList(productsToAdd);
+        page.Contunie(2);
+        page.add(3, 1);
+//        lisPage.backtoList();
+//         lisPage.deletTheList();
+//         lisPage.checkIfTheListEmpty();
+
+        // lisPage.add(3,1);
+
+        page.finishTheList();
+        page.verifyProductInTheCart();
 ////      page.refresh();
 ////      page.sortFromCheapTo(3);
 //       page.sortFromCheapTo();
