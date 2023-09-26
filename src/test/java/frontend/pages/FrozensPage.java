@@ -14,12 +14,14 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class FrozensPage extends basePage {
-    private WebElement cartItems;
-    private WebElement close;
-    private WebElement add;
-    private WebElement list;
+    private WebElement categoryElement;
+    private WebElement modle;
+    private WebElement closee;
+    private WebElement remove;
+    private WebElement confirm;
 
-    private WebElement clicktopay;
+
+
     private final String Url = "https://www.rami-levy.co.il/he/online/market/%D7%A7%D7%A4%D7%95%D7%90%D7%99%D7%9D";
 
     public FrozensPage(WebDriver driver) {
@@ -42,7 +44,7 @@ public class FrozensPage extends basePage {
     public void addItemsToCart() throws InterruptedException {
 
         Random random = new Random();
-        WebElement categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
+         categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
         List<WebElement> productElements = categoryElement.findElements(By.xpath("//div[starts-with(@id, 'min-height-product-')]"));
 
         if (!productElements.isEmpty()) {
@@ -63,7 +65,7 @@ public class FrozensPage extends basePage {
             waitTillVisible(driver, 10, By.xpath("//button[@class='focus-item btn-acc plus no-select']")).click();
         }
 
-        WebElement modle = waitTillVisible(driver, 10, By.id("delivery-modal"));
+         modle = waitTillVisible(driver, 10, By.id("delivery-modal"));
         System.out.println(modle);
         WebElement close = modle.findElement(By.id("close-popup"));
         close.click();
@@ -72,7 +74,7 @@ public class FrozensPage extends basePage {
 
     public void close() throws InterruptedException {
 
-        WebElement closee = waitTillVisible(driver, 10, By.id("close-popup"));
+         closee = waitTillVisible(driver, 10, By.id("close-popup"));
         if (closee != null) {
             closee.click();
         }
@@ -121,10 +123,10 @@ public class FrozensPage extends basePage {
     }
 
     public void removeCart(){
-        WebElement remove = waitTillVisible(driver,10,By.id("remove-cart"));
+         remove = waitTillVisible(driver,10,By.id("remove-cart"));
         remove.click();
 
-       WebElement confirm= waitTillVisible(driver,10,By.xpath("//button[@id='delete-cart-btn']"));
+        confirm= waitTillVisible(driver,10,By.xpath("//button[@id='delete-cart-btn']"));
         confirm.click();
     }
 

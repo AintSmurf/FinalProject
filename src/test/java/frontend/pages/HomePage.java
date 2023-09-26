@@ -22,8 +22,13 @@ public class HomePage extends basePage {
     private WebElement listBack;
     private WebElement finishButton;
     private WebElement searchResultItems;
+    private WebElement quikpurchesTap;
+    private WebElement contunie;
+    private  WebElement textarea;
+    private WebElement productNameElement;
+    private WebElement listproducts;
 
-        private final String Url = "https://www.rami-levy.co.il/he";
+    private final String Url = "https://www.rami-levy.co.il/he";
 
         private WebElement login;
 
@@ -73,15 +78,15 @@ public class HomePage extends basePage {
 
         }
 
-public void gotoCheckOut() {
-
-    WebElement v = waitTillVisible(driver, 20, By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[2]/div/div[2]/div[3]/div/div[2]"));
-    v.click();
-
-}
+//public void gotoCheckOut() {
+//
+//    WebElement v = waitTillVisible(driver, 20, By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[2]/div/div[2]/div[3]/div/div[2]"));
+//    v.click();
+//
+//}
     public void openFastPurches() {
-        WebElement quik = waitTillVisible(driver, 10, QuieckPurchesLocators.createList);
-        quik.click();
+        quikpurchesTap = waitTillVisible(driver, 10, QuieckPurchesLocators.createList);
+        quikpurchesTap.click();
     }
 
 
@@ -102,9 +107,9 @@ public void gotoCheckOut() {
     public void Contunie(int ret) throws InterruptedException {
         int maxret = 0;
         while (maxret < ret) {
-            WebElement temp = writingArea.findElement(QuieckPurchesLocators.contunie);
-            temp.click();
-            if(temp!=null){
+            contunie = writingArea.findElement(QuieckPurchesLocators.contunie);
+            contunie.click();
+            if(contunie!=null){
                 break;
             }
             ret++;
@@ -187,7 +192,7 @@ public void gotoCheckOut() {
         listBack.click();
     }
     public boolean checkIfTheListEmpty(){
-        WebElement textarea = driver.findElement(By.id("list-product"));
+         textarea = driver.findElement(By.id("list-product"));
         String valuein = textarea.getAttribute("value");
         if (valuein.isEmpty()==true) {
             return true;
@@ -202,11 +207,11 @@ public void gotoCheckOut() {
         WebElement cartProducts =waitTillVisible(driver,10,By.xpath("//div[@aria-label='סל קניות']"));
         WebElement products= waitTillVisible(driver,10,By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
 
-        WebElement listproducts = products.findElement(By.cssSelector("#market > ul"));
+         listproducts = products.findElement(By.cssSelector("#market > ul"));
         List<WebElement> listofTheeachProduct = listproducts.findElements(By.tagName("li"));
         for (WebElement oneProduct: listofTheeachProduct) {
 
-            WebElement productNameElement = oneProduct.findElement(By.cssSelector("div.item-name"));
+             productNameElement = oneProduct.findElement(By.cssSelector("div.item-name"));
             String productName = productNameElement.getText();
             names.add(productName);
 

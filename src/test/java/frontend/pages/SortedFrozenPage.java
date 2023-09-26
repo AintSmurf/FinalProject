@@ -10,12 +10,15 @@ import java.util.List;
 
 
 public class SortedFrozenPage extends basePage{
+    private WebElement priceElement;
+    private WebElement cart;
+    private WebElement categoryElement;
     public SortedFrozenPage(WebDriver driver) {
         super(driver);
     }
 
     public void addTheCheapestItem() throws InterruptedException {
-        WebElement categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
+         categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
         List<WebElement> productElements = categoryElement.findElements(By.xpath("//div[starts-with(@id, 'min-height-product-')]"));
 
         if (!productElements.isEmpty()) {
@@ -37,7 +40,7 @@ public class SortedFrozenPage extends basePage{
 
     }
     public void opencart() {
-        WebElement cart = waitTillVisible(driver, 10, By.xpath("//div[@class='z-index-9 position-fixed bottom-5 w-95']"));
+         cart = waitTillVisible(driver, 10, By.xpath("//div[@class='z-index-9 position-fixed bottom-5 w-95']"));
         if (cart != null) {
             cart.click();
         }
@@ -45,7 +48,7 @@ public class SortedFrozenPage extends basePage{
 
     }
     public String checkTheCart(){
-        WebElement priceElement =waitTillVisible(driver,10,By.xpath("//div[@data-v-a5d33fbe]//span[contains(@class, 'currency-wrap')]"));
+         priceElement =waitTillVisible(driver,10,By.xpath("//div[@data-v-a5d33fbe]//span[contains(@class, 'currency-wrap')]"));
         String priceText = priceElement.getText();
 
         return priceText;
