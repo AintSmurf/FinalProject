@@ -32,7 +32,7 @@ public class RemoveTheCart {
     }
     @Then("i have an empty cart")
     public void i_have_an_empty_cart() throws InterruptedException {
-       Thread.sleep(10000);
+//       Thread.sleep(10000);
         String valueCart = textContext.getFrozen().EmptyCart();
         Assert.assertTrue( valueCart.matches("לתשלום\\s*0.00 ₪"));
     }

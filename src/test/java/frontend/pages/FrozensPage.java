@@ -128,6 +128,8 @@ public class FrozensPage extends basePage {
 
         confirm= waitTillVisible(driver,10,By.xpath("//button[@id='delete-cart-btn']"));
         confirm.click();
+
+        waitTillVisible(driver,10, By.id("full-quick"));
     }
 
     }
