@@ -1,22 +1,16 @@
 package frontend.steps;
 
-import frontend.context.TextContext;
-import io.cucumber.java.en.And;
+import frontend.context.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
-
 
 
 public class SearchStep {
-    private TextContext textContext;
+    private TestContext textContext;
     private String Url;
-    public SearchStep(TextContext textContext){
+    public SearchStep(TestContext textContext){
         this.textContext=textContext;
     }
 

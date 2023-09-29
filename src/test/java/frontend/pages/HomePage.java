@@ -68,15 +68,7 @@ public class HomePage extends basePage {
         System.out.println(currentUrl);
         return currentUrl;
     }
-        public void returnToMain(){
-            waitTillClickable(driver,10,MainPageLocators.mainPage);
 
-        }
-
-        public void goToFrozen(){
-            waitTillClickable(driver,10,MainPageLocators.frozens);
-
-        }
 
 //public void gotoCheckOut() {
 //
@@ -221,8 +213,18 @@ public class HomePage extends basePage {
 
     }
 
+    public  void login(String user, String password) {
+        login =driver.findElement(MainPageLocators.login);
+        WebElement temp=waitTillClickable(driver,10,login);
+        temp.click();
 
+        driver.findElement(MainPageLocators.USERINPUT).sendKeys(user);
+        driver.findElement(MainPageLocators.PASSWORD).sendKeys(password);
+        waitTillClickable(driver,10,MainPageLocators.LOGINButton);
+        driver.navigate().refresh();
+        System.out.println(getLogin());
 
+    }
 
     public String getLogin(){
             return login.getText();

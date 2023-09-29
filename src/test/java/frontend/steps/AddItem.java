@@ -1,21 +1,23 @@
 package frontend.steps;
 
-import frontend.context.TextContext;
+import frontend.context.TestContext;
 import io.cucumber.java.en.*;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.Assert;
 
-public class AddItem {
-    public TextContext textContext;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
-    public AddItem(TextContext textContext){
+public class AddItem {
+    public TestContext textContext;
+
+    public AddItem(TestContext textContext){
 
         this.textContext = textContext;
     }
-    @Given("I am logged in")
-    public void i_am_logged_in() throws Exception {
+    @Given("I'am on homepage")
+    public void iAmOnHomepage() throws URISyntaxException, IOException, InterruptedException {
         textContext.getHomePage();
-        textContext.login("knawras17@gmail.com", "123nawras");
+
     }
 
     @When("i got to frozens section")
@@ -38,5 +40,6 @@ public class AddItem {
     }
 
 
-    }
+
+}
 

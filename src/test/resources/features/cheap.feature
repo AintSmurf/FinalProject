@@ -1,7 +1,7 @@
 
 Feature: add the cheap
   Scenario: add the cheapest frozen product to the cart
-    Given I am logged inn
+    Given I am on homepagee
     When i got to frozens sectionn
     And i ckick on sort
     And add the first product to the cart

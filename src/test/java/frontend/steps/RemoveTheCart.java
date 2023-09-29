@@ -1,18 +1,16 @@
 package frontend.steps;
 
-import frontend.context.TextContext;
+import frontend.context.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en_scouse.An;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.Assert;
 
 public class RemoveTheCart {
-    public TextContext textContext;
+    public TestContext textContext;
 
-    public RemoveTheCart(TextContext textContext){
+    public RemoveTheCart(TestContext textContext){
 
         this.textContext = textContext;
     }
@@ -32,7 +30,7 @@ public class RemoveTheCart {
     }
     @Then("i have an empty cart")
     public void i_have_an_empty_cart() throws InterruptedException {
-//       Thread.sleep(10000);
+
         String valueCart = textContext.getFrozen().EmptyCart();
         Assert.assertTrue( valueCart.matches("לתשלום\\s*0.00 ₪"));
     }

@@ -12,21 +12,13 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 @Slf4j
-public class TextContext {
+public class TestContext {
     private HomePage homePage;
 
     public void login(String email, String password) throws URISyntaxException, IOException, InterruptedException {
-        int ret = 0;
-        while (ret < 10) {
-            HttpHelper.login(WebDriverManager.initlaizeDriver(), email, password);
-            if (this.getHomePage().getLogin() != null) {
-                break;
-            } else {
-                log.error("failed to execute the script.");
-                ret++;
-            }
-        }
-        log.info("Logged in successfully.");
+            HttpHelper.loginUi(WebDriverManager.initlaizeDriver(),email,password);
+            log.info("Logged in successfully.");
+
     }
 
     public HomePage getHomePage() {

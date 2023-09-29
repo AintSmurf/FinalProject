@@ -1,6 +1,6 @@
 package frontend.steps;
 
-import frontend.context.TextContext;
+import frontend.context.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,9 +12,9 @@ import java.util.List;
 
 
 public class QuikPurchesRemoveSteps {
-    private TextContext textContext;
+    private TestContext textContext;
 
-    public QuikPurchesRemoveSteps(TextContext textContext) {
+    public QuikPurchesRemoveSteps(TestContext textContext) {
         this.textContext = textContext;
     }
     @Given(" i'am on home page")

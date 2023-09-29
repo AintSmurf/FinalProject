@@ -28,7 +28,10 @@ public class MainPageLocators {
 
     public static By toPay = By.xpath("//div[contains(@class, 'focus-item') and contains(@class, 'd-flex-') and contains(@class, 'white-text') and contains(@class, 'w-100') and contains(@class, 'px-3-') and contains(@class, 'pl-md-5')]");
 
-
+    public static By login = By.id("login-user");
+    public static By USERINPUT = By.id("email");
+    public static By PASSWORD = By.id("password");
+    public static By LOGINButton = By.xpath("//button[@aria-label='כניסה']");
 
 
 

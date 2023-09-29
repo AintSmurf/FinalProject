@@ -1,6 +1,6 @@
 package frontend.steps;
 
-import frontend.context.TextContext;
+import frontend.context.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,9 +13,9 @@ import java.util.List;
 
 
 public class QuikPurchesToENd {
-    private TextContext textContext;
+    private TestContext textContext;
 
-    public QuikPurchesToENd(TextContext textContext) {
+    public QuikPurchesToENd(TestContext textContext) {
         this.textContext = textContext;
     }
 
@@ -51,7 +51,7 @@ public class QuikPurchesToENd {
         List<String> expectedOutput = new ArrayList<>(Arrays.asList(
                 "שוקו יטבתה 1 ליטר",
                 "בונבוניירת פררו רושה 200 גרם",
-                "במבה חטיף בוטנים אסם 80 גרם",
+                "במבה חטיף בוטנים אסם 10*25 גרם",
                 "מחיר משלוח"
         ));
         List<String> actuallOutput = textContext.getHomePage().verifyProductInTheCart();

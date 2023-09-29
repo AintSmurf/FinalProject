@@ -16,6 +16,20 @@ public class SortedFrozenPage extends basePage{
     public SortedFrozenPage(WebDriver driver) {
         super(driver);
     }
+    public void sortFromCheapTo(int retry){
+        int maxret = 0;
+        while (maxret < retry) {
+            waitTillVisible(driver,10,By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
+
+            waitTillClickable(driver, 10, By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
+
+            maxret++;
+        }
+        waitTillClickable(driver,10,By.xpath("//button[@aria-label='אפשרויות מיון וסינון, מיין לפי רלוונטיות']"));
+        WebElement cheapest = waitTillVisible(driver,10,By.xpath("//li[@class='sort-list-item gray-hover border-radius-10 py-2 m-1']"));
+        cheapest.click();
+
+    }
 
     public void addTheCheapestItem() throws InterruptedException {
          categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));

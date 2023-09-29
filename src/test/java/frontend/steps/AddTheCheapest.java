@@ -1,6 +1,6 @@
 package frontend.steps;
 
-import frontend.context.TextContext;
+import frontend.context.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,15 +8,15 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class AddTheCheapest {
-  private   TextContext textContext;
+  private TestContext textContext;
 
-    public AddTheCheapest(TextContext textContext) {
+    public AddTheCheapest(TestContext textContext) {
         this.textContext = textContext;
     }
-    @Given("I am logged inn")
-    public void i_am_logged_inn() throws Exception {
+    @Given("I am on homepagee")
+    public void iAmOnHomepagee() throws Exception {
         textContext.getHomePage();
-        textContext.login("knawras17@gmail.com", "123nawras");
+
     }
 
     @When("i got to frozens sectionn")
@@ -25,7 +25,7 @@ public class AddTheCheapest {
     }
     @And("i ckick on sort")
     public void i_ckick_on_sort() throws InterruptedException {
-        textContext.getFrozen().sortFromCheapTo(3);
+        textContext.sorted().sortFromCheapTo(3);
 
     }
     @And("add the first product to the cart")
@@ -44,4 +44,6 @@ public class AddTheCheapest {
 
 
     }
+
+
 }

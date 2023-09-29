@@ -4,7 +4,9 @@ Feature: main page functionalities
 #    Given I am logged in
 
   Scenario: add item to cart
-    Given I am logged in
+    Given I'am on homepage
     When i got to frozens section
     And i add a random item
     Then the cart has a single item in it
+
+
