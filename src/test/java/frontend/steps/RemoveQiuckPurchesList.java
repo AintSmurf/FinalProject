@@ -11,10 +11,10 @@ import java.util.List;
 
 
 
-public class QuikPurchesRemoveSteps {
+public class RemoveQiuckPurchesList {
     private TestContext textContext;
 
-    public QuikPurchesRemoveSteps(TestContext textContext) {
+    public RemoveQiuckPurchesList(TestContext textContext) {
         this.textContext = textContext;
     }
     @Given(" i'am on home page")

@@ -7,10 +7,10 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 
-public class SearchStep {
+public class Search {
     private TestContext textContext;
     private String Url;
-    public SearchStep(TestContext textContext){
+    public Search(TestContext textContext){
         this.textContext=textContext;
     }
 

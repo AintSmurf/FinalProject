@@ -1,6 +1,6 @@
 package frontend.pages;
 
-import frontend.locators.MainPageLocators;
+import frontend.locators.HomePageLocators;
 import frontend.locators.QuieckPurchesLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -45,12 +45,12 @@ public class HomePage extends basePage {
 
         public void initPage() {
             actions = new Actions(driver);
-            login = waitTillVisible(driver,20,MainPageLocators.LOGINUSER);
+            login = waitTillVisible(driver,20, HomePageLocators.LOGINUSER);
         }
 
 
     public void searchStuff(String item) {
-        WebElement searchElement = waitTillVisible(driver, 10, MainPageLocators.search);
+        WebElement searchElement = waitTillVisible(driver, 10, HomePageLocators.SEARCH);
         searchElement.sendKeys(item);
         searchElement.sendKeys(Keys.RETURN);
 
@@ -70,21 +70,15 @@ public class HomePage extends basePage {
     }
 
 
-//public void gotoCheckOut() {
-//
-//    WebElement v = waitTillVisible(driver, 20, By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[2]/div/div[2]/div[3]/div/div[2]"));
-//    v.click();
-//
-//}
     public void openFastPurches() {
-        quikpurchesTap = waitTillVisible(driver, 10, QuieckPurchesLocators.createList);
+        quikpurchesTap = waitTillVisible(driver, 10, QuieckPurchesLocators.CREAT_LIST);
         quikpurchesTap.click();
     }
 
 
     // writing on the quiech purches list
     public void writeList(List<String> list) {
-        writingArea = waitTillVisible(driver, 10, QuieckPurchesLocators.productsList);
+        writingArea = waitTillVisible(driver, 10, QuieckPurchesLocators.PRODUCT_LIST);
 //       waitTillClickable(driver,10,writingArea);
         for (int i = 0; i < list.size(); i++) {
             actions.sendKeys(writingArea, list.get(i)).build().perform();
@@ -99,7 +93,7 @@ public class HomePage extends basePage {
     public void Contunie(int ret) throws InterruptedException {
         int maxret = 0;
         while (maxret < ret) {
-            contunie = writingArea.findElement(QuieckPurchesLocators.contunie);
+            contunie = writingArea.findElement(QuieckPurchesLocators.CONTUNIE);
             contunie.click();
             if(contunie!=null){
                 break;
@@ -130,7 +124,7 @@ public class HomePage extends basePage {
         int ret = 0;
         int count = 0;
         while (ret < retry) {
-            searchResultItems = waitTillVisible(driver, 10, QuieckPurchesLocators.results);
+            searchResultItems = waitTillVisible(driver, 10, QuieckPurchesLocators.RESULTS);
             System.out.println(searchResultItems);
             List<WebElement> elements = searchResultItems.findElements(By.xpath("//div[@class='product-gallery-wrap flex-row-50 big-plus-minus item-card position-relative is-buy-list']"));
             List<WebElement> buttons = new ArrayList<>();
@@ -161,26 +155,26 @@ public class HomePage extends basePage {
 
 
     public void finishTheList() {
-        finishButton = driver.findElement(QuieckPurchesLocators.finished);
+        finishButton = driver.findElement(QuieckPurchesLocators.FINISHED);
 
         if (finishButton != null) {
-            waitTillClickable(driver,10,QuieckPurchesLocators.finished);
+            waitTillClickable(driver,10,QuieckPurchesLocators.FINISHED);
         } else {
             System.out.println("Finish button not found");
         }
     }
     public void deletTheList () {
 
-        cancleList =waitTillVisible(driver,10, QuieckPurchesLocators.deleteList);
+        cancleList =waitTillVisible(driver,10, QuieckPurchesLocators.DELET_LIST);
         cancleList.click();
 
-        waitTillVisible(driver, 10, QuieckPurchesLocators.popupDelet);
+        waitTillVisible(driver, 10, QuieckPurchesLocators.POPUP_DELETE);
 
-        waitTillClickable(driver, 10, QuieckPurchesLocators.confirmationdelete);
+        waitTillClickable(driver, 10, QuieckPurchesLocators.CONFIRM_DELETE );
     }
 
     public void backtoList(){
-        listBack = driver.findElement(QuieckPurchesLocators.goTolist);
+        listBack = driver.findElement(QuieckPurchesLocators.GO_TO_LIST);
         listBack.click();
     }
     public boolean checkIfTheListEmpty(){
@@ -214,13 +208,13 @@ public class HomePage extends basePage {
     }
 
     public  void login(String user, String password) {
-        login =driver.findElement(MainPageLocators.login);
+        login =driver.findElement(HomePageLocators.LOGIN);
         WebElement temp=waitTillClickable(driver,10,login);
         temp.click();
 
-        driver.findElement(MainPageLocators.USERINPUT).sendKeys(user);
-        driver.findElement(MainPageLocators.PASSWORD).sendKeys(password);
-        waitTillClickable(driver,10,MainPageLocators.LOGINButton);
+        driver.findElement(HomePageLocators.USERINPUT).sendKeys(user);
+        driver.findElement(HomePageLocators.PASSWORD).sendKeys(password);
+        waitTillClickable(driver,10, HomePageLocators.LOGINButton);
         driver.navigate().refresh();
         System.out.println(getLogin());
 

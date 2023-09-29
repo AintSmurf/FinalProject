@@ -12,10 +12,10 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class QuikPurchesToENd {
+public class QuickPurchesToEnd {
     private TestContext textContext;
 
-    public QuikPurchesToENd(TestContext textContext) {
+    public QuickPurchesToEnd(TestContext textContext) {
         this.textContext = textContext;
     }
 
@@ -59,6 +59,4 @@ public class QuikPurchesToENd {
 
 
     }
-
-
 }

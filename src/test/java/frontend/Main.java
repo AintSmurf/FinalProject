@@ -3,7 +3,6 @@ package frontend;
 import backend.HttpHelper;
 import frontend.pages.FrozensPage;
 import frontend.pages.HomePage;
-import frontend.pages.QuiekPurchesPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 

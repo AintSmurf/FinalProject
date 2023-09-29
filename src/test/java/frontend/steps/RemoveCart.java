@@ -7,10 +7,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class RemoveTheCart {
+public class RemoveCart {
     public TestContext textContext;
 
-    public RemoveTheCart(TestContext textContext){
+    public RemoveCart(TestContext textContext){
 
         this.textContext = textContext;
     }

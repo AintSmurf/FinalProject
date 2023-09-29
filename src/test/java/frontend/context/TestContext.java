@@ -3,7 +3,6 @@ package frontend.context;
 import backend.HttpHelper;
 import frontend.pages.FrozensPage;
 import frontend.pages.HomePage;
-import frontend.pages.QuiekPurchesPage;
 import frontend.pages.SortedFrozenPage;
 import frontend.utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
@@ -34,10 +33,7 @@ public class TestContext {
         return new FrozensPage(WebDriverManager.initlaizeDriver());
     }
 
-    public QuiekPurchesPage myList() {
-        log.info("trying to ceate list of products");
-        return new QuiekPurchesPage(WebDriverManager.initlaizeDriver());
-    }
+
     public SortedFrozenPage sorted(){
         return new SortedFrozenPage(WebDriverManager.initlaizeDriver());
     }

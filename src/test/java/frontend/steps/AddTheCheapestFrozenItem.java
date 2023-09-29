@@ -7,10 +7,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class AddTheCheapest {
+public class AddTheCheapestFrozenItem {
   private TestContext textContext;
 
-    public AddTheCheapest(TestContext textContext) {
+    public AddTheCheapestFrozenItem(TestContext textContext) {
         this.textContext = textContext;
     }
     @Given("I am on homepagee")
@@ -40,9 +40,6 @@ public class AddTheCheapest {
         String priceText = textContext.sorted().checkTheCart();
 
         Assert.assertEquals("4.70 ₪",priceText);
-
-
-
     }
 
 

@@ -1,17 +1,13 @@
 package frontend.pages;
 
-import frontend.locators.MainPageLocators;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class FrozensPage extends basePage {
     private WebElement categoryElement;
@@ -105,22 +101,6 @@ public class FrozensPage extends basePage {
         String pricenValue = cart.getText();
         return pricenValue;
     }
-
-
-//    public void sortFromCheapTo(int retry){
-//        int maxret = 0;
-//        while (maxret < retry) {
-//            waitTillVisible(driver,10,By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
-//
-//                waitTillClickable(driver, 10, By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
-//
-//                maxret++;
-//        }
-//        waitTillClickable(driver,10,By.xpath("//button[@aria-label='אפשרויות מיון וסינון, מיין לפי רלוונטיות']"));
-//        WebElement cheapest = waitTillVisible(driver,10,By.xpath("//li[@class='sort-list-item gray-hover border-radius-10 py-2 m-1']"));
-//        cheapest.click();
-//
-//    }
 
     public void removeCart(){
          remove = waitTillVisible(driver,10,By.id("remove-cart"));
