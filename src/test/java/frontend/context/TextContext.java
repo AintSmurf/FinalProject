@@ -2,6 +2,7 @@ package frontend.context;
 
 import backend.HttpHelper;
 import frontend.pages.HomePage;
+import frontend.pages.frozensPages;
 import frontend.utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -24,7 +25,9 @@ public class TextContext {
         }
         log.info("Logged in successfully.");
     }
-
+    public frozensPages navigateToFrozen(){
+        return new frozensPages(WebDriverManager.initlaizeDriver());
+    }
     public HomePage getHomePage() {
         log.info("Trying to access homepage.");
         return new HomePage(WebDriverManager.initlaizeDriver());

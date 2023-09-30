@@ -1,6 +1,7 @@
 package backend;
 
 import backend.pom.HttpResponseAndFormattedJson;
+import backend.pom.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
@@ -21,13 +22,14 @@ public class HttpFacade {
     private static String BASE_URL = "https://api-prod.rami-levy.co.il/api/v2";
 
 
-    public static  <T> HttpResponseAndFormattedJson<T> post (String url, HashMap<String, String> userDet, Class<T> clz) throws URISyntaxException, IOException, InterruptedException {
+    public static <T,K> HttpResponseAndFormattedJson<K> post(String url, HashMap<String, T> userDet, Class<K> clz) throws URISyntaxException, IOException, InterruptedException {
         //objects
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
         //convert the user details map to json
         String params = new Gson().toJson(userDet);
+        System.out.println(params);
 
         //make the request
         HttpRequest httpRequest = HttpRequest.newBuilder()
@@ -40,15 +42,15 @@ public class HttpFacade {
 
         //capture the response
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        System.out.println(httpResponse.statusCode());
 
         //convert the response to String to set the localStorage
         String formattedJsonResponse = gson.toJson(JsonParser.parseString(httpResponse.body()));
 
         //convert response to pom through SerializedName
-        T result=  gson.fromJson(httpResponse.body(), clz);
+        K result=  gson.fromJson(httpResponse.body(), clz);
 
         return new HttpResponseAndFormattedJson<>(httpResponse, formattedJsonResponse,result);
     }
-
 
 }

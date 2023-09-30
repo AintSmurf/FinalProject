@@ -3,6 +3,7 @@ package frontend.locators;
 import org.openqa.selenium.By;
 
 public class MainPageLocators {
+    public static By LISTOFADDBUTTONS = By.xpath("class='focus-item online-catalog-wrap pb-3 pb-lg-1 d-flex flex-wrap align-content-end'");
     public static By LOGINUSER = By.id("login-user");
     public static By search = By.id("destination");
     public static By cart = By.xpath("//*[@id=\"onlineCartHeader\"]/div[1]/div[1]/span/svg");

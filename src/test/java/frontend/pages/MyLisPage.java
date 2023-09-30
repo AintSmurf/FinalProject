@@ -9,7 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 
 public class MyLisPage extends basePage {
-    private final String Url = "https://www.rami-levy.co.il/he";
     private WebElement creatList;
     private WebElement writingArea;
     private Actions actions;
@@ -20,13 +19,8 @@ public class MyLisPage extends basePage {
 
     public MyLisPage(WebDriver driver) {
         super(driver);
-        this.getUrl();
     }
 
-    public void getUrl() {
-        driver.get(Url);
-        this.initPage();
-    }
 
     public void initPage() {
         creatList = driver.findElement(MyListLocators.createList);

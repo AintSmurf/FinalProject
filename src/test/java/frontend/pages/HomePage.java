@@ -18,7 +18,7 @@ public class HomePage extends basePage {
     private final String Url = "https://www.rami-levy.co.il/he";
 
     private Actions actions;
-    private  WebElement searchElemt;
+    private WebElement searchElemt;
     private WebElement gotoMain;
     private WebElement frozenss;
     private WebElement sort;
@@ -26,7 +26,9 @@ public class HomePage extends basePage {
 
     public HomePage(WebDriver driver) {
         super(driver);
-        this.getUrl();
+        if(driver != null){
+            this.getUrl();
+        }
     }
 
     public void getUrl() {
@@ -36,37 +38,55 @@ public class HomePage extends basePage {
 
     public void initPage() {
         actions = new Actions(driver);
-        login = waitTillVisible(driver,20,MainPageLocators.LOGINUSER);
+        login = waitTillVisible(driver, 20, MainPageLocators.LOGINUSER);
     }
 
 
-    public void searchstuff(String item){
-        searchElemt= driver.findElement(MainPageLocators.search);
+    public void searchStuff(String item) {
+        searchElemt = driver.findElement(MainPageLocators.search);
         searchElemt.sendKeys(item);
         searchElemt.sendKeys(Keys.RETURN);
 
     }
-    public void returnToMain(){
+
+    public void returnToMain() {
         gotoMain = driver.findElement(MainPageLocators.mainPage);
         gotoMain.click();
     }
 
-    public void goToFrozen(){
-        frozenss = driver.findElement(MainPageLocators.frozens);
-        frozenss.click();
+    public void NavigateToFrozen() {
+        waitTillClickable(driver, 20, MainPageLocators.frozens);
     }
-    public void sortFromCheapTo(){
-        sort = driver.findElement(MainPageLocators.sorting);
-        sort.click();
+
+    public void NavigateToFruits() {
+        waitTillClickable(driver, 20, MainPageLocators.fruits);
     }
-    public String getLogin(){
+
+    public void NavigateToDairy() {
+        waitTillClickable(driver, 20, MainPageLocators.dairy);
+    }
+
+    public void NavigateToOrganic() {
+        waitTillClickable(driver, 20, MainPageLocators.organic);
+    }
+
+    public void NavigateToBaking() {
+        waitTillClickable(driver, 20, MainPageLocators.baking);
+    }
+
+    public void sortFromCheapTo() {
+        waitTillClickable(driver, 20, MainPageLocators.sorting);
+    }
+
+    public String getLogin() {
         return login.getText();
     }
 
-    public void refresh(){
+    public void refresh() {
         this.refreshBrowser();
     }
-    public void close(){
+
+    public void close() {
         this.closeBrowser();
     }
 }

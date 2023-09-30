@@ -3,8 +3,11 @@ package frontend.steps;
 import frontend.context.TextContext;
 import io.cucumber.java.en.*;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 public class AddItem {
-    public TextContext textContext;
+    private TextContext textContext;
 
     public AddItem(TextContext textContext){
         this.textContext = textContext;
@@ -14,14 +17,17 @@ public class AddItem {
         textContext.getHomePage();
         textContext.login(textContext.getEmail(), textContext.getPassword());
     }
-    @When("I add an item")
-    public void i_add_an_item() {
-        System.out.println("dsadsad");
+    @When("navigate to frozenpage.")
+    public void navigateToFrozenpage() throws URISyntaxException, IOException, InterruptedException {
+    }
+    @And("i add an item.")
+    public void iAddAnItem() {
     }
     @Then("the cart has a single item in it")
     public void the_cart_has_a_single_item_in_it() {
         System.out.println("hello");
     }
+
 
 
 }
