@@ -14,7 +14,7 @@ import java.util.Optional;
 
 public class Main {
     public static void main(String[] args) throws URISyntaxException, IOException, InterruptedException {
-        System.setProperty("webdriver.chrome.driver","src/test/java/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","src/test/resources/version17/chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--disable-web-security");
         Gson gson = new Gson();

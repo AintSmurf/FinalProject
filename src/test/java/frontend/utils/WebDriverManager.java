@@ -8,7 +8,7 @@ public class WebDriverManager {
     private static WebDriver driver;
     public static WebDriver initlaizeDriver(){
         if(driver == null){
-            System.setProperty("webdriver.chrome.driver","src/test/java/drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver","src/test/java/drivers/version17/chromedriver.exe");
             ChromeOptions chromeOptions = new ChromeOptions();
             chromeOptions.addArguments("--disable-site-isolation-trials");
             chromeOptions.addArguments("--disable-web-security");

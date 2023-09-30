@@ -1,6 +1,6 @@
 package frontend.pages;
 
-import frontend.locators.MyListLocators;
+import frontend.locators.QuickPurchaseLocators;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,17 +23,17 @@ public class MyLisPage extends basePage {
 
 
     public void initPage() {
-        creatList = driver.findElement(MyListLocators.createList);
+        creatList = driver.findElement(QuickPurchaseLocators.CREATE_LIST);
         actions = new Actions(driver);
     }
 
     public void openList() {
-        waitTillClickable(driver, 10, MyListLocators.createList);
+        waitTillClickable(driver, 10, QuickPurchaseLocators.CREATE_LIST);
     }
 
     public void writeList(String[] list) {
-        writingArea = driver.findElement(MyListLocators.productsList);
-        waitTillVisible(driver, 10, MyListLocators.productsList);
+        writingArea = driver.findElement(QuickPurchaseLocators.PRODUCT_LIST);
+        waitTillVisible(driver, 10, QuickPurchaseLocators.PRODUCT_LIST);
         for (int i = 0; i < list.length; i++) {
             actions.sendKeys(writingArea, list[i]).build().perform();
             this.newline();
@@ -47,7 +47,7 @@ public class MyLisPage extends basePage {
     public void Contunie(int ret) throws InterruptedException {
         int maxret = 0;
         while (maxret < ret) {
-            WebElement temp = writingArea.findElement(MyListLocators.contunie);
+            WebElement temp = writingArea.findElement(QuickPurchaseLocators.CONTUNIE);
             temp.click();
             ret++;
         }
@@ -55,22 +55,22 @@ public class MyLisPage extends basePage {
     }
     public void add(){
 
-        List<WebElement> searchResultItems = driver.findElements(MyListLocators.results);
+        List<WebElement> searchResultItems = driver.findElements(QuickPurchaseLocators.RESULTS);
         WebElement itemToAdd = searchResultItems.get(0);
 
-        WebElement addToCartButton = itemToAdd.findElement(MyListLocators.first);
+        WebElement addToCartButton = itemToAdd.findElement(QuickPurchaseLocators.FIRST);
         addToCartButton.click();
 
     }
 
     public void deletTheList() {
-        cancleList = writingArea.findElement(MyListLocators.deleteList);
+        cancleList = writingArea.findElement(QuickPurchaseLocators.DELET_LIST);
         cancleList.click();
 
-        popupToDelet = writingArea.findElement(MyListLocators.popupDelet);
-        waitTillVisible(driver,10,MyListLocators.popupDelet);
+        popupToDelet = writingArea.findElement(QuickPurchaseLocators.POPUP_DELETE);
+        waitTillVisible(driver,10,QuickPurchaseLocators.POPUP_DELETE);
 
-        confirmationTodelete= popupToDelet.findElement(MyListLocators.confirmationdelete);
-        waitTillClickable(driver, 10, MyListLocators.confirmationdelete);
+        confirmationTodelete= popupToDelet.findElement(QuickPurchaseLocators.CONFIRM_DELETE);
+        waitTillClickable(driver, 10, QuickPurchaseLocators.CONFIRM_DELETE);
     }
 }

@@ -27,7 +27,7 @@ public class QuickPurchesToEnd {
 
     @And("I click on QuickBuy")
     public void iClickOnQuickBuy() {
-        textContext.getHomePage().openFastPurches();
+        textContext.getHomePage().openFastPurchase();
         
     }
 
@@ -38,7 +38,7 @@ public class QuickPurchesToEnd {
 
     @And("I start adding all of the products to the cart")
     public void iStartAddingAllOfTheProductsToTheCart() throws InterruptedException {
-        textContext.getHomePage().Contunie(2);
+        textContext.getHomePage().Continue(2);
         textContext.getHomePage().add(3,1);
     }
     @And("click on finished")

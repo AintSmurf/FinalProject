@@ -25,7 +25,7 @@ public class RemoveQiuckPurchesList {
 
     @And(": i click on QuickBuy")
     public void iClickOnQuickBuy() {
-        textContext.getHomePage().openFastPurches();
+        textContext.getHomePage().openFastPurchase();
 
     }
 
@@ -36,7 +36,7 @@ public class RemoveQiuckPurchesList {
 
     @And("I start adding all of them to the cart")
     public void iStartAddingAllOfThemToTheCart() throws InterruptedException {
-        textContext.getHomePage().Contunie(2);
+        textContext.getHomePage().Continue(2);
         textContext.getHomePage().add(3,2);
     }
 

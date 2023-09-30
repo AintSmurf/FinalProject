@@ -3,16 +3,9 @@ package frontend.context;
 import backend.HttpHelper;
 import frontend.pages.FrozensPage;
 import frontend.pages.HomePage;
-<<<<<<< HEAD:src/test/java/frontend/context/TextContext.java
-import frontend.pages.frozensPages;
-=======
 import frontend.pages.SortedFrozenPage;
->>>>>>> front:src/test/java/frontend/context/TestContext.java
 import frontend.utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
 
 @Slf4j
 public class TestContext {
@@ -22,9 +15,6 @@ public class TestContext {
             HttpHelper.loginUi(WebDriverManager.initlaizeDriver(),email,password);
             log.info("Logged in successfully.");
 
-    }
-    public frozensPages navigateToFrozen(){
-        return new frozensPages(WebDriverManager.initlaizeDriver());
     }
     public HomePage getHomePage() {
         log.info("Trying to access homepage.");

@@ -4,21 +4,10 @@ import frontend.context.TestContext;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-
 public class AddItem {
-<<<<<<< HEAD
-    private TextContext textContext;
-=======
-    public TestContext textContext;
+    private TestContext textContext;
 
     public AddItem(TestContext textContext){
->>>>>>> front
-
         this.textContext = textContext;
     }
     @Given("I'am on homepage")
@@ -26,13 +15,6 @@ public class AddItem {
         textContext.getHomePage();
 
     }
-<<<<<<< HEAD
-    @When("navigate to frozenpage.")
-    public void navigateToFrozenpage() throws URISyntaxException, IOException, InterruptedException {
-    }
-    @And("i add an item.")
-    public void iAddAnItem() {
-=======
     @When("i am navigating to frozen page")
     public void i_am_navigating_to_frozen_page() {
         textContext.getHomePage().NavigateToFrozen();
@@ -44,7 +26,6 @@ public class AddItem {
         Thread.sleep(5000);
         textContext.getFrozen().close();
 
->>>>>>> front
     }
     @Then("the cart has a single item in it")
     public void the_cart_has_a_single_item_in_it(){
@@ -58,7 +39,7 @@ public class AddItem {
 
     }
     @And("add the first product to the cart")
-    public void add_the_first_product_to_the_cart() throws InterruptedException {
+    public void add_the_first_product_to_the_cart(){
         textContext.sorted().addTheCheapestItem();
         textContext.getFrozen().close();
     }
