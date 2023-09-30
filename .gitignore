@@ -5,3 +5,5 @@ src/test/resources/credentials/credsLocal.ps1
 src/test/java/frontend/main.java
 src/test/cucumber-reports
 src/test/screenshots
+src/test/resources/credentials/creds.ps1
+

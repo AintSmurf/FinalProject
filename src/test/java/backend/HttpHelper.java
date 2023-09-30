@@ -3,6 +3,7 @@ package backend;
 import backend.pom.HttpResponseAndFormattedJson;
 import backend.pom.User;
 import backend.utils.Utils;
+import frontend.pages.HomePage;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -36,6 +37,10 @@ public class HttpHelper {
         String json = getToken(email, password);
         Utils.waitTillScriptExecutedStringFormat(driver, 20, json, 50);
         Utils.waitTillScriptExecuted(driver, 30, "return window.localStorage.getItem('ramilevy') !== null;");
+    }
+    public static void loginUi(WebDriver driver, String email, String password){
+        HomePage login= new HomePage(driver);
+        login.login(email,password);
     }
 
 }

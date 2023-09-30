@@ -1,18 +1,12 @@
 package backend;
 import backend.pom.products.Catalog;
-import backend.pom.products.Datum;
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
-import frontend.utils.WaitsBack;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.network.Network;
 import org.openqa.selenium.devtools.v85.network.model.RequestId;
 import org.openqa.selenium.devtools.v85.network.model.Response;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Optional;
