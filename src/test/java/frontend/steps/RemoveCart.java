@@ -18,7 +18,7 @@ public class RemoveCart {
 
     @Given("iam in the frozen page")
     public void iam_in_the_frozen_page() {
-        textContext.getFrozen().Navigate();
+//        textContext.getFrozen().Navigate();
     }
     @When("i add a some item")
     public void i_add_a_some_item() throws InterruptedException {

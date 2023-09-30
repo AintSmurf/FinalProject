@@ -43,7 +43,7 @@ public class RemoveQiuckPurchesList {
     @Then("I remove it")
     public void iRemoveIt() {
         textContext.getHomePage().backtoList();
-        textContext.getHomePage().deletTheList();
+        textContext.getHomePage().deleteTheList();
         
     }
 

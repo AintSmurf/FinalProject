@@ -22,22 +22,10 @@ public class FrozensPage extends basePage {
 
     public FrozensPage(WebDriver driver) {
         super(driver);
-        driver.navigate().to(Url);
-
     }
 
-    public void Navigate() {
-        driver.get(Url);
-        this.initPage();
-    }
 
-    public void initPage() {
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("window.scrollBy(0,2500)");
-
-    }
-
-    public void addItemsToCart() throws InterruptedException {
+    public void addItemsToCart(){
 
         Random random = new Random();
          categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
@@ -54,21 +42,16 @@ public class FrozensPage extends basePage {
 
 
             randomProduct.click();
-            //saving the product price to assert later
-//            WebElement priceElement = randomProduct.findElement(By.xpath(".//div[@data-v-49951636]//span[contains(@class, 'currency-wrap')]/span[1]"));
-//            String productPrice = priceElement.getText();
 
             waitTillVisible(driver, 10, By.xpath("//button[@class='focus-item btn-acc plus no-select']")).click();
         }
-
-         modle = waitTillVisible(driver, 10, By.id("delivery-modal"));
-        System.out.println(modle);
+        modle = waitTillVisible(driver, 10, By.id("delivery-modal"));
         WebElement close = modle.findElement(By.id("close-popup"));
         close.click();
 
     }
 
-    public void close() throws InterruptedException {
+    public void close(){
 
          closee = waitTillVisible(driver, 10, By.id("close-popup"));
         if (closee != null) {
@@ -88,7 +71,7 @@ public class FrozensPage extends basePage {
     }
 
 
-    public int verfyCart() throws InterruptedException {
+    public int verifyCart(){
         WebElement cartProducts =waitTillVisible(driver,10,By.xpath("//div[@aria-label='סל קניות']"));
         WebElement products= waitTillVisible(driver,10,By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
 

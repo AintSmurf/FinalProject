@@ -20,9 +20,7 @@ public class SortedFrozenPage extends basePage{
         int maxret = 0;
         while (maxret < retry) {
             waitTillVisible(driver,10,By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
-
             waitTillClickable(driver, 10, By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
-
             maxret++;
         }
         waitTillClickable(driver,10,By.xpath("//button[@aria-label='אפשרויות מיון וסינון, מיין לפי רלוונטיות']"));
@@ -31,7 +29,7 @@ public class SortedFrozenPage extends basePage{
 
     }
 
-    public void addTheCheapestItem() throws InterruptedException {
+    public void addTheCheapestItem(){
          categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
         List<WebElement> productElements = categoryElement.findElements(By.xpath("//div[starts-with(@id, 'min-height-product-')]"));
 

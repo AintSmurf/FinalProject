@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 public class HomePageLocators {
     public static By LOGINUSER = By.id("login-user");
     public static By SEARCH = By.id("destination");
-    public static By cart = By.xpath("//*[@id=\"onlineCartHeader\"]/div[1]/div[1]/span/svg");
+    public static By CART = By.xpath("//*[@id=\"onlineCartHeader\"]/div[1]/div[1]/span/svg");
+
+    public static By MAINMENU = By.id("navbar");
     public static By FILTER= By.xpath("//*[@id=\"search\"]/div/div/div[1]/div/div[1]/div/div[1]/div[3]");
     public static By MAIN_PAGE = By.xpath("//*[@id=\"__layout\"]/div/div[1]/div[1]/div[3]/div[2]/div/div[1]");
     public static By SALES = By.id("sale");

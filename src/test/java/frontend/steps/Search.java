@@ -28,7 +28,7 @@ public class Search {
 
     @Then(": verfiy search works {string}")
     public void iam_on_ice_cream_result_page(String urlCucumber) {
-        Assert.assertTrue(urlCucumber.equals(Url));
+        Assert.assertEquals( Url,urlCucumber);
     }
 
 }

@@ -14,7 +14,7 @@ import java.net.URISyntaxException;
 public class TestContext {
     private HomePage homePage;
 
-    public void login(String email, String password) throws URISyntaxException, IOException, InterruptedException {
+    public void loginUi(String email, String password){
             HttpHelper.loginUi(WebDriverManager.initlaizeDriver(),email,password);
             log.info("Logged in successfully.");
 
@@ -29,7 +29,7 @@ public class TestContext {
     }
 
     public FrozensPage getFrozen() {
-        log.info("trying to go to frozen");
+        log.info("Trying to access frozen page.");
         return new FrozensPage(WebDriverManager.initlaizeDriver());
     }
 

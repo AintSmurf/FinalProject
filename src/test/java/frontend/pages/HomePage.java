@@ -18,7 +18,7 @@ public class HomePage extends basePage {
     private WebElement writingArea;
     private Actions actions;
 
-    private WebElement cancleList;
+    private WebElement cancelList;
     private WebElement listBack;
     private WebElement finishButton;
     private WebElement searchResultItems;
@@ -47,18 +47,16 @@ public class HomePage extends basePage {
             actions = new Actions(driver);
             login = waitTillVisible(driver,20, HomePageLocators.LOGINUSER);
         }
+        public void NavigateToFrozen(){
+            waitTillClickable(driver,20,HomePageLocators.FROZENS);
+        }
 
 
     public void searchStuff(String item) {
         WebElement searchElement = waitTillVisible(driver, 10, HomePageLocators.SEARCH);
         searchElement.sendKeys(item);
         searchElement.sendKeys(Keys.RETURN);
-
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.urlContains("search"));
-
-
+        waitTillContainsText(driver,20,HomePageLocators.SEARCH,"search");
         String currentUrl = driver.getCurrentUrl();
         System.out.println(currentUrl);
     }
@@ -75,7 +73,6 @@ public class HomePage extends basePage {
         quikpurchesTap.click();
     }
 
-
     // writing on the quiech purches list
     public void writeList(List<String> list) {
         writingArea = waitTillVisible(driver, 10, QuieckPurchesLocators.PRODUCT_LIST);
@@ -89,7 +86,7 @@ public class HomePage extends basePage {
     public void newline() {
         actions.keyDown(Keys.SHIFT).sendKeys(writingArea, Keys.ENTER).keyUp(Keys.SHIFT).build().perform();
     }
-    // click on המשך after writting the prducts
+    // click on המשך after writing the products
     public void Contunie(int ret) throws InterruptedException {
         int maxret = 0;
         while (maxret < ret) {
@@ -163,10 +160,10 @@ public class HomePage extends basePage {
             System.out.println("Finish button not found");
         }
     }
-    public void deletTheList () {
+    public void deleteTheList () {
 
-        cancleList =waitTillVisible(driver,10, QuieckPurchesLocators.DELET_LIST);
-        cancleList.click();
+        cancelList =waitTillVisible(driver,10, QuieckPurchesLocators.DELET_LIST);
+        cancelList.click();
 
         waitTillVisible(driver, 10, QuieckPurchesLocators.POPUP_DELETE);
 
