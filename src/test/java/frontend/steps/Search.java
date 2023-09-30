@@ -1,34 +1,37 @@
 package frontend.steps;
 
-import frontend.context.TestContext;
+import context.TestContext;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import pages.HomePage;
+
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 
 public class Search {
     private TestContext textContext;
-    private String Url;
+    private String Keyword;
+    private HomePage homePage;
     public Search(TestContext textContext){
         this.textContext=textContext;
     }
 
     @Given(": i'am on home page")
     public void i_am_on_home_page() {
-      textContext.getHomePage();
+      homePage = textContext.get("homepage");
     }
 
     @When(": i search icecream")
     public void i_search() {
-       textContext.getHomePage().searchStuff("גלידה");
-       Url= textContext.getHomePage().getCurrentUrl();
-
+       homePage.searchStuff("גלידה");
     }
 
-    @Then(": verfiy search works {string}")
-    public void iam_on_ice_cream_result_page(String urlCucumber) {
-        Assert.assertEquals( Url,urlCucumber);
-    }
 
+    @Then(": verify keyword {string}")
+    public void verifyKeyword(String keyword) {
+        assertTrue(homePage.getSearchKeyword().equals(keyword));
+    }
 }

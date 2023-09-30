@@ -1,19 +1,20 @@
 package frontend.steps;
 
-import frontend.context.TestContext;
+import context.TestContext;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-
+import pages.HomePage;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.*;
 
 
 public class QuickPurchesToEnd {
     private TestContext textContext;
+    private HomePage homePage;
 
     public QuickPurchesToEnd(TestContext textContext) {
         this.textContext = textContext;
@@ -21,42 +22,49 @@ public class QuickPurchesToEnd {
 
     @Given("I am on homepage")
     public void iAmOnHomepage() {
-        textContext.getHomePage();
+        homePage = textContext.get("homepage");
         
     }
 
     @And("I click on QuickBuy")
     public void iClickOnQuickBuy() {
-        textContext.getHomePage().openFastPurchase();
+        homePage.openFastPurchase();
         
     }
 
     @When("I start add these products:")
     public void iStartAddTheseProducts(List<String> ProductsToAdd) {
-        textContext.getHomePage().writeList(ProductsToAdd);
+        homePage.writeList(ProductsToAdd);
     }
 
     @And("I start adding all of the products to the cart")
     public void iStartAddingAllOfTheProductsToTheCart() throws InterruptedException {
-        textContext.getHomePage().Continue(2);
-        textContext.getHomePage().add(3,1);
+        homePage.Continue(2);
+        homePage.add(3,1);
     }
     @And("click on finished")
     public void clickOnFinished() {
-        textContext.getHomePage().finishTheList();
+        homePage.finishTheList();
 
     }
-    @Then("I have the products in the cart")
-    public void iHaveTheProductsInTheCart() {
-        List<String> expectedOutput = new ArrayList<>(Arrays.asList(
-                "שוקו יטבתה 1 ליטר",
-                "בונבוניירת פררו רושה 200 גרם",
-                "במבה חטיף בוטנים אסם 10*25 גרם",
-                "מחיר משלוח"
-        ));
-        List<String> actuallOutput = textContext.getHomePage().verifyProductInTheCart();
-        Assert.assertEquals(expectedOutput,actuallOutput);
 
-
+    @Then("I have the products in the cart:")
+    public void iHaveTheProductsInTheCart(List<String> Products) {
+        String temp = homePage.checkTheCart();
+        assertEquals(Products,buildString(temp));
     }
+
+    private static List<String> buildString(String text) {
+        String[] lines = text.split("\n");
+
+        List<String> resultList = new ArrayList<>();
+
+        for (String line : lines) {
+            if (line.contains("גרם") || line.contains("ליטר")) {
+                resultList.add(line);
+            }
+        }
+        return resultList;
+    }
+
 }

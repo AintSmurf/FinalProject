@@ -1,10 +1,9 @@
 package frontend.steps;
 
-import frontend.utils.WebDriverManager;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.Scenario;
+import context.TestContext;
+import io.cucumber.java.*;
+import pages.HomePage;
+import utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -18,6 +17,10 @@ import java.io.IOException;
 @Slf4j
 public class Hooks {
 
+    private static TestContext testContext;
+    public Hooks(TestContext testContext){
+        this.testContext = testContext;
+    }
 
     @BeforeAll
     public static void cleanFramework() {
@@ -28,6 +31,11 @@ public class Hooks {
             log.error("Failed to clean one or more directories.");
         }
     }
+//    @AfterAll
+//    public void closeBrowser(){
+//        WebDriver driver =testContext.get("driver");
+//        driver.close();
+//    }
 
     private static void cleanAndDeleteDirectory(String name, String path) throws IOException {
         log.info("Cleaning and deleting the " + name + " Directory");
@@ -43,25 +51,32 @@ public class Hooks {
 
 
     @Before
-    public void setUp() {
+    public void setUp(Scenario s) {
+        WebDriver driver = WebDriverManager.initializeDriver();
+        testContext.put("driver", driver);
+        testContext.put("homepage",new HomePage(testContext.get("driver")));
         log.info("driver is initialized.");
+        log.info(s.getName()+" executed.");
     }
 
     @After
     public void tearDown(Scenario s) {
-        WebDriver driver = WebDriverManager.initlaizeDriver();
-        if (s.isFailed()) {
+        WebDriver driver = testContext.get("driver");
+        if (driver != null && s.getSourceTagNames().size() == 1) {
             try {
-                File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(screenshot, new File("src/test/screenshots/" + s.getName() + ".png"));
-                log.error("Screenshot saved to: " + "screenshots/" + s.getName() + ".png");
+                if (s.isFailed()) {
+                    File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                    FileUtils.copyFile(screenshot, new File("src/test/screenshots/" + s.getName() + ".png"));
+                    log.error("Screenshot saved to: " + "screenshots/" + s.getName() + ".png");
+                }
             } catch (IOException e) {
                 log.error("Failed to take screenshot.");
+            } finally {
+                driver.quit();
+                log.info("driver is closed.");
             }
         }
-//        if (driver != null) {
-//            driver.close();
-//            log.info("driver is closed.");
-//        }
     }
+
+
 }
