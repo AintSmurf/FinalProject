@@ -1,5 +1,5 @@
 # RamiLevy Website Testing with Java and Cucumber
-This project demonstrates how to perform automated testing of the NBA website using Java, Cucumber, and JUnit. It provides a structured framework for testing various functionalities of the NBA website
+This project demonstrates how to perform automated testing of the RamiLevy website using Java, Cucumber, and JUnit. It provides a structured framework for testing various functionalities of the RamiLevy website.
 
 # Table of Contents
 * [Prerequisites](#prerequisites)
