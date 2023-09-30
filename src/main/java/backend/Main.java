@@ -2,14 +2,12 @@ package backend;
 import backend.pom.products.Catalog;
 import com.google.gson.Gson;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v85.network.Network;
 import org.openqa.selenium.devtools.v85.network.model.RequestId;
 import org.openqa.selenium.devtools.v85.network.model.Response;
-import utils.WaitsBack;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -43,7 +41,6 @@ public class Main {
 
         driver.get("https://www.rami-levy.co.il/he");
         driver.navigate().refresh();
-        WaitsBack.waitTillClickable(driver,10, By.xpath("//*[@id='main-menu-7']"));
 
 
 //        String token  = HttpHelper.getToken("knawras17@gmail.com","123nawras");

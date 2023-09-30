@@ -2,10 +2,6 @@ package context;
 
 
 import backend.HttpHelper;
-import org.openqa.selenium.WebDriver;
-import pages.FrozensPage;
-import pages.HomePage;
-import pages.SortedFrozenPage;
 import utils.WebDriverManager;
 import lombok.extern.slf4j.Slf4j;
 
