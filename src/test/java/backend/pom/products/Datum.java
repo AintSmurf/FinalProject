@@ -174,6 +174,6 @@ public class Datum {
         return "Datum{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                '}';
+                "}\n";
     }
 }

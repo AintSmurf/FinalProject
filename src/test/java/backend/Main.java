@@ -34,12 +34,11 @@ public class Main {
                 RequestId requestId = responseReceived.getRequestId();
                 String body = devTools.send(Network.getResponseBody(requestId)).getBody();
                 try{
-                    String formattedJsonResponse = gson.toJson(body, Catalog.class);
-                    System.out.println(body);
-                    System.out.println(formattedJsonResponse);
+                    Catalog c = gson.fromJson(body, Catalog.class);
+                    System.out.println(c.getData());
                 }
                 catch (Exception e){
-                    System.out.println("failed to execute");
+                    System.out.println(" failed conversion to pom through SerializedName.");
                 }
 
 
@@ -48,7 +47,7 @@ public class Main {
 
         driver.get("https://www.rami-levy.co.il/he");
         driver.navigate().refresh();
-        WaitsBack.waitTillClickable(driver,10,By.xpath("//*[@id='main-menu-7']"));
+//        WaitsBack.waitTillClickable(driver,10,By.xpath("//*[@id='main-menu-7']"));
 
 
 //        String token  = HttpHelper.getToken("knawras17@gmail.com","123nawras");
