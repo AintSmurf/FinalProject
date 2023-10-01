@@ -20,6 +20,7 @@ public class FrozensPage extends basePage {
     private WebElement cartProducts;
     private WebElement products;
     private WebElement listproducts;
+    private WebElement close;
 
 
 
@@ -52,8 +53,8 @@ public class FrozensPage extends basePage {
     }
     public void addItemsToCart(){
         Random random = new Random();
-         categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
-        List<WebElement> productElements = categoryElement.findElements(By.xpath("//div[starts-with(@id, 'min-height-product-')]"));
+         categoryElement = waitTillVisible(driver, 10, FrozensPageLocators.CATAGORY);
+        List<WebElement> productElements = categoryElement.findElements(FrozensPageLocators.PRODUCTS);
 
         if (!productElements.isEmpty()) {
             int randomIndex = random.nextInt(productElements.size());
@@ -67,16 +68,16 @@ public class FrozensPage extends basePage {
 
             randomProduct.click();
 
-            waitTillVisible(driver, 10, By.xpath("//button[@class='focus-item btn-acc plus no-select']")).click();
+            waitTillVisible(driver, 10,FrozensPageLocators.ADDBUTTON).click();
         }
-        modle = waitTillVisible(driver, 10, By.id("delivery-modal"));
-        WebElement close = modle.findElement(By.id("close-popup"));
+        modle = waitTillVisible(driver, 10, FrozensPageLocators.DELEVIRYMODELE);
+         close = modle.findElement(FrozensPageLocators.CLOSEMODELE);
         close.click();
 
     }
 
     public void close(){
-        closee = waitTillVisible(driver, 10, By.id("close-popup"));
+        closee = waitTillVisible(driver, 10, FrozensPageLocators.CLOSEPOPUP);
         if (closee != null) {
             closee.click();
         }
@@ -85,14 +86,14 @@ public class FrozensPage extends basePage {
 
 
     public int verifyCart(){
-         cartProducts =waitTillVisible(driver,10,By.xpath("//div[@aria-label='סל קניות']"));
-         products= waitTillVisible(driver,10,By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
-         listproducts = products.findElement(By.cssSelector("#market > ul"));
+         cartProducts =waitTillVisible(driver,10,FrozensPageLocators.CARTPRODUCT);
+         products= waitTillVisible(driver,10,FrozensPageLocators.LISTPRODUCTS);
+         listproducts = products.findElement(FrozensPageLocators.PRODUCTONTHELIST);
          int ulSize = listproducts.findElements(By.tagName("li")).size();
          return ulSize;
     }
     public String EmptyCart() {
-        cart = waitTillVisible(driver, 30, By.xpath("//div[@class='z-index-9 position-fixed bottom-5 w-95']"));
+        cart = waitTillVisible(driver, 30, FrozensPageLocators.CARTELEMENT);
         String pricenValue = cart.getText();
         return pricenValue;
     }

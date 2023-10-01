@@ -139,7 +139,7 @@ public class HomePage extends basePage {
 
         while (maxret < ret) {
             try {
-                waitTillClickable(driver, 10, By.xpath("//div[@aria-label='הבא']"));
+                waitTillClickable(driver, 10,QuickPurchaseLocators.NEXT);
 
                 break;
             } catch (Exception e) {
@@ -156,7 +156,7 @@ public class HomePage extends basePage {
         while (ret < retry) {
             searchResultItems = waitTillVisible(driver, 10, QuickPurchaseLocators.RESULTS);
             System.out.println(searchResultItems);
-            List<WebElement> elements = searchResultItems.findElements(By.xpath("//div[@class='product-gallery-wrap flex-row-50 big-plus-minus item-card position-relative is-buy-list']"));
+            List<WebElement> elements = searchResultItems.findElements(QuickPurchaseLocators.RESULT_PRODUCTS);
             List<WebElement> buttons = new ArrayList<>();
             for (int i = 0; i < elements.size(); i++) {
                 if (count == amount) {
@@ -168,9 +168,9 @@ public class HomePage extends basePage {
             for (WebElement button : buttons) {
                 button.findElement(By.tagName("button")).click();
                 try {
-                    WebElement modle = waitTillVisible(driver, 10, By.id("delivery-modal"));
+                    WebElement modle = waitTillVisible(driver, 10,QuickPurchaseLocators.MODELE);
                     System.out.println(modle);
-                    WebElement close = modle.findElement(By.id("close-popup"));
+                    WebElement close = modle.findElement(QuickPurchaseLocators.CLOSEPOP);
                     close.click();
                 } catch (Exception e) {
                     System.out.println("failed to close");
@@ -210,7 +210,7 @@ public class HomePage extends basePage {
     }
 
     public boolean checkIfTheListEmpty() {
-        textarea = driver.findElement(By.id("list-product"));
+        textarea = driver.findElement(QuickPurchaseLocators.LIST_AFTER_REMOVE);
         String valuein = textarea.getAttribute("value");
         if (valuein.isEmpty() == true) {
             return true;
@@ -219,22 +219,22 @@ public class HomePage extends basePage {
         }
 
     }
-
-    public ArrayList<String> verifyProductInTheCart() {
-        ArrayList<String> names = new ArrayList<>();
-        WebElement products = waitTillVisible(driver, 10, By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
-
-        listproducts = products.findElement(By.cssSelector("#market > ul"));
-        List<WebElement> listofProducts = listproducts.findElements(By.tagName("li"));
-        for (WebElement oneProduct : listofProducts) {
-
-            productNameElement = oneProduct.findElement(By.cssSelector("div.item-name"));
-            String productName = productNameElement.getText();
-            names.add(productName);
-        }
-        return names;
-
-    }
+//
+//    public ArrayList<String> verifyProductInTheCart() {
+//        ArrayList<String> names = new ArrayList<>();
+//        WebElement products = waitTillVisible(driver, 10, By.xpath("//div[@aria-label='רשימת מוצרים בעגלת קניות']"));
+//
+//        listproducts = products.findElement(By.cssSelector("#market > ul"));
+//        List<WebElement> listofProducts = listproducts.findElements(By.tagName("li"));
+//        for (WebElement oneProduct : listofProducts) {
+//
+//            productNameElement = oneProduct.findElement(By.cssSelector("div.item-name"));
+//            String productName = productNameElement.getText();
+//            names.add(productName);
+//        }
+//        return names;
+//
+//    }
     @Override
     public String checkTheCart() {
         return super.checkTheCart();

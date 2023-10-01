@@ -1,6 +1,7 @@
 package pages;
 
 import locators.FrozensPageLocators;
+import locators.basePageLocators;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -97,18 +98,18 @@ public class basePage {
     protected void sortByCheapest(int retry){
         int maxret = 0;
         while (maxret < retry) {
-            waitTillVisible(driver,10,By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
-            waitTillClickable(driver, 10, By.xpath("//div[@class='blue s-text mx-3 d-none d-lg-block']"));
+            waitTillVisible(driver,10, basePageLocators.SORTICON);
+            waitTillClickable(driver, 10,basePageLocators.SORTICON);
             maxret++;
         }
-        waitTillClickable(driver,10,By.xpath("//button[@aria-label='אפשרויות מיון וסינון, מיין לפי רלוונטיות']"));
-        WebElement cheapest = waitTillVisible(driver,10,By.xpath("//li[@class='sort-list-item gray-hover border-radius-10 py-2 m-1']"));
+        waitTillClickable(driver,10, basePageLocators.SORTOPTIONS);
+        WebElement cheapest = waitTillVisible(driver,10,basePageLocators.SORTBYCHEAPEST);
         cheapest.click();
     }
     public void addTheCheapestItem(){
         closeAD();
-        categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
-        List<WebElement> productElements = categoryElement.findElements(By.xpath("//div[starts-with(@id, 'min-height-product-')]"));
+        categoryElement = waitTillVisible(driver, 10, basePageLocators.AFTERSORTLIST);
+        List<WebElement> productElements = categoryElement.findElements(basePageLocators.CHEAPESTITEMONTHELIST);
 
         if (!productElements.isEmpty()) {
             WebElement firstProduct = productElements.get(0);
@@ -119,13 +120,13 @@ public class basePage {
             action.moveToElement(firstProduct).build().perform();
 
             firstProduct.click();
-            waitTillVisible(driver, 10, By.xpath("//button[@class='focus-item btn-acc plus no-select']")).click();
+            waitTillVisible(driver, 10, basePageLocators.ADDBUTTON).click();
         }
         closeAD();
     }
 
     public void opencart() {
-        cart = waitTillVisible(driver, 10, By.xpath("//div[@class='z-index-9 position-fixed bottom-5 w-95']"));
+        cart = waitTillVisible(driver, 10, basePageLocators.CART);
         try{
             if (cart != null) {
                 cart.click();
@@ -140,7 +141,7 @@ public class basePage {
     }
     public String checkTheCart(){
         closeAD();
-        WebElement webElement = waitTillVisible(driver, 20, By.id("scroll-cart"));
+        WebElement webElement = waitTillVisible(driver, 20, basePageLocators.SCROLL);
         return  webElement.getText();
     }
     private void closeAD(){
@@ -155,7 +156,7 @@ public class basePage {
         closeAD();
         waitTillClickable(driver,20, FrozensPageLocators.REMOVEBUTTONCART);
         waitTillClickable(driver,20, FrozensPageLocators.CONFIRMATION);
-        waitTillVisible(driver,10, By.id("full-quick"));
+        waitTillVisible(driver,10, basePageLocators.ELEMNTTOCHECKTHEEMPTY);
     }
 
 }
