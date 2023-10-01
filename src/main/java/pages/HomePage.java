@@ -28,6 +28,8 @@ public class HomePage extends basePage {
     private WebElement searchElemt;
     private WebElement gotoMain;
     private WebElement login;
+    private WebElement modle;
+    private WebElement close;
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -168,9 +170,9 @@ public class HomePage extends basePage {
             for (WebElement button : buttons) {
                 button.findElement(By.tagName("button")).click();
                 try {
-                    WebElement modle = waitTillVisible(driver, 10,QuickPurchaseLocators.MODELE);
+                     modle = waitTillVisible(driver, 10,QuickPurchaseLocators.MODELE);
                     System.out.println(modle);
-                    WebElement close = modle.findElement(QuickPurchaseLocators.CLOSEPOP);
+                     close = modle.findElement(QuickPurchaseLocators.CLOSEPOP);
                     close.click();
                 } catch (Exception e) {
                     System.out.println("failed to close");

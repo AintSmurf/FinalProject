@@ -19,19 +19,20 @@ public class Search {
         this.textContext=textContext;
     }
 
-    @Given(": i'am on home page")
-    public void i_am_on_home_page() {
+    @Given("I am on the home page")
+    public void iAmOnTheHomePage() {
       homePage = textContext.get("homepage");
     }
+    @When("I search for {string}")
+    public void i_search(String keyword) {
+        homePage.searchStuff(keyword);
 
-    @When(": i search icecream")
-    public void i_search() {
-       homePage.searchStuff("גלידה");
+    }
+    @Then("I verify the keyword {string}")
+    public void iVerifyTheKeyword(String result) {
+        assertTrue(homePage.getSearchKeyword().equals(result));
+
     }
 
 
-    @Then(": verify keyword {string}")
-    public void verifyKeyword(String keyword) {
-        assertTrue(homePage.getSearchKeyword().equals(keyword));
-    }
 }
