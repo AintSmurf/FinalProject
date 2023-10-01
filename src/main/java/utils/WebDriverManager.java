@@ -20,4 +20,11 @@ public class WebDriverManager {
         return driver;
     }
 
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    public static void setDriver(WebDriver driver) {
+        WebDriverManager.driver = driver;
+    }
 }

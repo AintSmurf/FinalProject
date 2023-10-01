@@ -243,6 +243,10 @@ public class HomePage extends basePage {
     public void opencart() {
         super.opencart();
     }
+    @Override
+    public void removeCart(){
+        super.removeCart();
+    }
 
     public String getLogin() {
         return login.getText();

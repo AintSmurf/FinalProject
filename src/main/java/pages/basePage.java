@@ -151,6 +151,12 @@ public class basePage {
             System.out.println("failed to close pop up.");
         }
     }
+    public void removeCart(){
+        closeAD();
+        waitTillClickable(driver,20, FrozensPageLocators.REMOVEBUTTONCART);
+        waitTillClickable(driver,20, FrozensPageLocators.CONFIRMATION);
+        waitTillVisible(driver,10, By.id("full-quick"));
+    }
 
 }
 

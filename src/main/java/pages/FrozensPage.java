@@ -46,6 +46,10 @@ public class FrozensPage extends basePage {
     public void opencart() {
         super.opencart();
     }
+    @Override
+    public void removeCart(){
+        super.removeCart();
+    }
     public void addItemsToCart(){
         Random random = new Random();
          categoryElement = waitTillVisible(driver, 10, By.xpath("//div[1]/div[2][@role='list']"));
@@ -93,12 +97,7 @@ public class FrozensPage extends basePage {
         return pricenValue;
     }
 
-    public void removeCart(){
-        close();
-        waitTillClickable(driver,20, FrozensPageLocators.REMOVEBUTTONCART);
-        waitTillClickable(driver,20, FrozensPageLocators.CONFIRMATION);
-        waitTillVisible(driver,10, By.id("full-quick"));
-    }
+
 
     }
 

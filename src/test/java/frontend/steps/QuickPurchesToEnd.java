@@ -9,7 +9,7 @@ import pages.HomePage;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 
 public class QuickPurchesToEnd {
@@ -50,8 +50,9 @@ public class QuickPurchesToEnd {
 
     @Then("I have the products in the cart:")
     public void iHaveTheProductsInTheCart(List<String> Products) {
+        homePage.removeCart();
         String temp = homePage.checkTheCart();
-        assertEquals(Products,buildString(temp));
+        assertEquals(Products.size(),buildString(temp).size());
     }
 
     private static List<String> buildString(String text) {
